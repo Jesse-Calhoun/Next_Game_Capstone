@@ -47,3 +47,13 @@ def edit_game(request, pk):
                 game.delete()
                 return Response(status=status.HTTP_204_NO_CONTENT)
         return Response('Unauthorized request.', status=status.HTTP_401_UNAUTHORIZED)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def join_game(request, pk):
+        game = get_object_or_404(Game, pk=pk)
+        game.attendees.add(request.user)
+        serializer = GameSerializer(game)
+        return Response(serializer.data)
+
+        # serializer = GameSerializer(game, data=request.data)
