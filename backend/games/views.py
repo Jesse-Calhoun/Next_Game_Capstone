@@ -36,11 +36,14 @@ def game_details(request, pk):
 @permission_classes([IsAuthenticated])
 def edit_game(request, pk):
         game = get_object_or_404(Game, pk=pk)
-        if request.method == 'PUT':
-                serializer = GameSerializer(game, data=request.data)
-                serializer.is_valid(raise_exception=True)
-                serializer.save()
-                return Response(serializer.data)
-        elif request.method == 'DELETE':
-            game.delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
+        user_id = request.user.id
+        if game.user.id == user_id:
+            if request.method == 'PUT':
+                    serializer = GameSerializer(game, data=request.data)
+                    serializer.is_valid(raise_exception=True)
+                    serializer.save()
+                    return Response(serializer.data)
+            elif request.method == 'DELETE':
+                game.delete()
+                return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response('Unauthorized request.', status=status.HTTP_401_UNAUTHORIZED)
