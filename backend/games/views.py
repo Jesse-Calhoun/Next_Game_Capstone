@@ -54,6 +54,6 @@ def join_game(request, pk):
         game = get_object_or_404(Game, pk=pk)
         game.attendees.add(request.user)
         serializer = GameSerializer(game)
+        # serializer.is_valid()
+        # serializer.save()
         return Response(serializer.data)
-
-        # serializer = GameSerializer(game, data=request.data)

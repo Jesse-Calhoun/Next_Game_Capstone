@@ -1,0 +1,443 @@
+{
+	"info": {
+		"_postman_id": "6c4da5ee-5d5a-49a0-93ee-4b92775667c1",
+		"name": "Next_Game",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25207481"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register_User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"dantheman\",\r\n    \"password\": \"password1@\",\r\n    \"email\": \"dan@devcodecamp.com\",\r\n    \"first_name\": \"Daniel\",\r\n    \"last_name\": \"Tulpa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login_User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"dantheman\",\r\n    \"password\": \"password1@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh_Access",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refresh\": \"PASTE REFRESH TOKEN FROM LOGIN HERE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/login/refresh/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login",
+								"refresh",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cars",
+			"item": [
+				{
+					"name": "GET all cars (unprotected)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/cars/all/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cars",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET cars for user (protected)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ4MTU2ODM5LCJpYXQiOjE2NDcyOTI4MzksImp0aSI6ImJjYzJhZTUzOTRlYzQ3OThiNjI0YTcwYTYzYjcxOThmIiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJqanZlZ2EiLCJmaXJzdF9uYW1lIjoiIn0.l9ATW5CpWF2TGniqVgU1I-a8LkuqgLQ4ok3tJh6asAA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/cars/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cars",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST new car for user (protected)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ4MTU3MjczLCJpYXQiOjE2NDcyOTMyNzMsImp0aSI6IjIyMDQ4YTg2NzEzMTQyMmZhZjJmNDNmYmI2MTExZDg2IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.DeTe47E7-9eCr7xKE22m3CvFMDj0Sxye5A6ndwJ024M",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"make\": \"Ford\",\n    \"model\": \"F150\",\n    \"year\": 1999\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/cars/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cars",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Games",
+			"item": [
+				{
+					"name": "Get all games(unprotected)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/games/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"games",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create_Game(protected)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5MDc0ODE5LCJpYXQiOjE2NzgyMTA4MTksImp0aSI6ImY1ZTNhM2VhNTFjMDRmYzc5M2Y5NzZkOTJiNzY1ZWRjIiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJKZXNzZUNhbGhvdW4iLCJmaXJzdF9uYW1lIjoiSmVzc2UifQ.QSAbho8SVgDcKVzp-KFbdavrX5WPpV1-vdGmk4X7Ql0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": \"Connecticut Sports Arena New Milford, Ct\",\n    \"game_type\": \"Looking for 2 on 2, half court, game to 11, 2 pointers equal 1 point and 3 pointers equal 2. Make it take it.\",\n    \"players_at_game\": \"3\",\n    \"next\": \"False\",\n    \"indoor\": \"False\",\n    \"attendees\": [\n        1,\n        2,\n        3\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/games/create_game/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"games",
+								"create_game",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get game (by id)(unprotected)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/games/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"games",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Game (protected)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5MDc0ODE5LCJpYXQiOjE2NzgyMTA4MTksImp0aSI6ImY1ZTNhM2VhNTFjMDRmYzc5M2Y5NzZkOTJiNzY1ZWRjIiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJKZXNzZUNhbGhvdW4iLCJmaXJzdF9uYW1lIjoiSmVzc2UifQ.QSAbho8SVgDcKVzp-KFbdavrX5WPpV1-vdGmk4X7Ql0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": \"Youngs Field\",\n    \"game_type\": \"NO WATER AVAILABLE! 2 on 2, half court, game to 11, 2 pointers equal 1 point and 3 pointers equal 2. Make it take it.\",\n    \"players_at_game\": 4,\n    \"next\": false,\n    \"indoor\": false,\n    \"attendees\": [\n        1,\n        2,\n        3,\n        4\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/games/2/edit/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"games",
+								"2",
+								"edit",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Join game(protected)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5MDg4NjE3LCJpYXQiOjE2NzgyMjQ2MTcsImp0aSI6ImM5NGUwODczZTVlYjQxZTU5Yjk2M2FkYTk0OTAzZDg0IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJKZXNzZUNhbGhvdW4iLCJmaXJzdF9uYW1lIjoiSmVzc2UifQ.Opxqc7U9p2eShdNxL1Zli8pBXwvcUK1eAVqBs57fkOc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/games/4/join/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"games",
+								"4",
+								"join",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Game(protected)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5MDg4NjE3LCJpYXQiOjE2NzgyMjQ2MTcsImp0aSI6ImM5NGUwODczZTVlYjQxZTU5Yjk2M2FkYTk0OTAzZDg0IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJKZXNzZUNhbGhvdW4iLCJmaXJzdF9uYW1lIjoiSmVzc2UifQ.Opxqc7U9p2eShdNxL1Zli8pBXwvcUK1eAVqBs57fkOc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/games/1/edit/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"games",
+								"1",
+								"edit",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
