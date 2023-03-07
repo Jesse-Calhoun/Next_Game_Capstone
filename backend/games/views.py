@@ -11,7 +11,36 @@ from .serializers import GameSerializer
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def get_all_games(request):
-    if request.method == 'GET':
+    # if request.method == 'GET':
         games = Game.objects.filter()
         serializer = GameSerializer(games, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def create_game(request):
+        # if request.method == 'POST':
+                serializer = GameSerializer(data=request.data)
+                serializer.is_valid(raise_exception=True)
+                serializer.save(user=request.user)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def game_details(request, pk):
+        game = get_object_or_404(Game, pk=pk)
+        serializer = GameSerializer(game)
+        return Response(serializer.data)
+
+@api_view(['PUT','DELETE'])
+@permission_classes([IsAuthenticated])
+def edit_game(request, pk):
+        game = get_object_or_404(Game, pk=pk)
+        if request.method == 'PUT':
+                serializer = GameSerializer(game, data=request.data)
+                serializer.is_valid(raise_exception=True)
+                serializer.save()
+                return Response(serializer.data)
+        elif request.method == 'DELETE':
+            game.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)

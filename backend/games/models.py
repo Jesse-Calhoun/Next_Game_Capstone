@@ -10,4 +10,4 @@ class Game(models.Model):
     players_at_game = models.IntegerField()
     next = models.BooleanField()
     indoor = models.BooleanField()
-    attendees = models.IntegerField()
+    attendees = models.ManyToManyField(User, related_name='games')
