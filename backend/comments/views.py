@@ -5,8 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import Comment
 from .serializers import CommentSerializer
-from games.models import Game
-from games.serializers import GameSerializer
+
 
 # Create your views here.
 
