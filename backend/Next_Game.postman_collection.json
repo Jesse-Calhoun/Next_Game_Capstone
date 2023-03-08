@@ -111,6 +111,31 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/users/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -265,7 +290,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"address\": \"Connecticut Sports Arena New Milford, Ct\",\n    \"game_type\": \"Looking for 2 on 2, half court, game to 11, 2 pointers equal 1 point and 3 pointers equal 2. Make it take it.\",\n    \"players_at_game\": \"3\",\n    \"next\": \"False\",\n    \"indoor\": \"False\",\n    \"attendees\": [\n        1,\n        2,\n        3\n    ]\n}",
+							"raw": "{\n    \"address\": \"Connecticut Sports Arena New Milford, Ct\",\n    \"date_time\": \"2023-03-08T11:30:00Z\",\n    \"game_type\": \"Looking for 2 on 2, half court, game to 11, 2 pointers equal 1 point and 3 pointers equal 2. Make it take it.\",\n    \"players_at_game\": \"3\",\n    \"next\": \"False\",\n    \"indoor\": \"False\",\n    \"attendees\": [\n        1,\n        2,\n        3\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -431,6 +456,79 @@
 								"games",
 								"1",
 								"edit",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Get all comments(unprotected)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/games/4/comments/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"games",
+								"4",
+								"comments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post comment(protected)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5MTY3MTc2LCJpYXQiOjE2NzgzMDMxNzYsImp0aSI6IjYxYWZjN2U3NDEyMjQ4NDI5NjIxM2E0NDdlMWJhM2IwIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJUaGF0R3V5MTIzIiwiZmlyc3RfbmFtZSI6IkplZmYifQ.WpXIHIrwl5hEfG9g9CyhHV4gGFYOy3jjjMjM9r47avA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"How long you staying?\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/games/4/comments/create/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"games",
+								"4",
+								"comments",
+								"create",
 								""
 							]
 						}
