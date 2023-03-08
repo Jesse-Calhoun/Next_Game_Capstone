@@ -1,5 +1,6 @@
-# from django.db import models
+from django.db import models
 from django.contrib.auth.models import AbstractUser
+# from .models import User
 
 
 class User(AbstractUser):
@@ -14,3 +15,4 @@ class User(AbstractUser):
     # Example (note import of models above that is commented out)
     # this will add a column to the user table
     # is_student = models.BooleanField('student status', default=False)
+    # follower = models.ManyToManyField('authentication.User', related_name='follower')
