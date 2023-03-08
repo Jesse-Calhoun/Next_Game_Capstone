@@ -7,5 +7,5 @@ urlpatterns  = [
     path('<int:pk>/',views.game_details),
     path('<int:pk>/edit/', views.edit_game),
     path('<int:pk>/join/', views.join_game),
-    path('<int:game_id>/comments/', include('comments.urls')),
+    path('<int:pk>/comments/', include('comments.urls')),
 ]
