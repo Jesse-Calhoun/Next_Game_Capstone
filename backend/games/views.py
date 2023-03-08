@@ -12,7 +12,7 @@ from .serializers import GameSerializer
 @permission_classes([AllowAny])
 def get_all_games(request):
     # if request.method == 'GET':
-        games = Game.objects.filter()
+        games = Game.objects.all()
         serializer = GameSerializer(games, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
