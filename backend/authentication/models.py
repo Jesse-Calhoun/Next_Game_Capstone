@@ -16,4 +16,4 @@ class User(AbstractUser):
     # this will add a column to the user table
     # is_student = models.BooleanField('student status', default=False)
     # follower = models.ManyToManyField('authentication.User', related_name='follower')
-    follows = models.ManyToManyField("self", related_name = 'followed_by',symmetrical=False, blank=True )
+    friends = models.ManyToManyField('self', related_name = 'user_friends',symmetrical=False, blank=True )
