@@ -28,6 +28,13 @@ def get_all_users(request):
     serializer = RegistrationSerializer(users, many=True)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_user_by_id(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    serializer = UserSerializer(user)
+    return Response(serializer.data)
+
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def edit_user(request):
