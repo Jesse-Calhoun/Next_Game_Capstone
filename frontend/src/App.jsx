@@ -12,20 +12,22 @@ import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 
 // Util Imports
-// import PrivateRoute from "./utils/PrivateRoute";
+import PrivateRoute from "./utils/PrivateRoute";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 function App() {
   return (
     <div>
       <Navbar />
       <Routes>
-        {/* <Route
-          path="/"
+        <Route
+          path="/profile"
           element={
             <PrivateRoute>
+              <ProfilePage/>
             </PrivateRoute>
           }
-        /> */}
+        />
         <Route path='' element={<HomePage />}/>
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />

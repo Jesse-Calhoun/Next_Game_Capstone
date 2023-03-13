@@ -1,6 +1,10 @@
+import GameCard from "../GameCard/GameCard";
+
 const GameList = () => {
     return ( 
-        <div>GameList</div>
+        <div>
+            <GameCard/>
+        </div>
      );
 }
  
