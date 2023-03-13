@@ -11,6 +11,7 @@ import axios from "axios";
 const HomePage = () => {
   const [location, setLocation] = useState('')
   const [gameAddress, setGameAddress] = useState('')
+  const [games, setGames] = useState([{}])
   
   async function getResultsFromLocation(){
     let url = 'https://maps.googleapis.com/maps/api/geocode/json'
@@ -24,13 +25,26 @@ const HomePage = () => {
     setGameAddress(response.data.results[0].formatted_address)
   }
   
+  async function getAllGames(){
+    let url = 'http://127.0.0.1:8000/api/games/'
+    let response = await axios.get(url)
+    console.log(response.data)
+    // debugger
+    setGames(response.data)
+  }
+  console.log(games)
+
+  useEffect(() =>{
+    getAllGames()
+  }, [])
+  
   
   return (
     <div className="container">
       <h1>Home Page for <strong>NextGame</strong>!</h1>
       <SearchBar setLocation={setLocation} getResultsFromLocation={getResultsFromLocation} location={location} />
       <SearcMap/>
-      <GameList/>
+      <GameList games={games}/>
     </div>
   );
 };

@@ -11,6 +11,7 @@ const SearchBar = ({ setLocation, getResultsFromLocation, location }) => {
 
     return ( 
         <form onSubmit={handleSearch}>
+            <label>Location:</label>
             <input type='search' placeholder="Input address or location(include town and state to be precise)" onChange={(event) => setLocation(event.target.value)} value={location} className='search-bar'/>
             <button type='submit'>Search</button>
         </form>

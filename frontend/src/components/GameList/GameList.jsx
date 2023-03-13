@@ -1,9 +1,10 @@
 import GameCard from "../GameCard/GameCard";
 
-const GameList = () => {
+const GameList = ({ games }) => {
+    let gameCards = games.map((game) => <GameCard game={game}/>)
     return ( 
         <div>
-            <GameCard/>
+            {gameCards}
         </div>
      );
 }

@@ -29,7 +29,7 @@ def get_all_users(request):
     return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def get_user_by_id(request, pk):
     user = get_object_or_404(User, pk=pk)
     serializer = UserSerializer(user)
