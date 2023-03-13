@@ -2,11 +2,10 @@ import React from "react";
 import SearchBar from '../../components/Searchbar/SearchBar'
 import GameList from '../../components/GameList/GameList'
 import SearcMap from "../../components/SearchMap/SearchMap";
-
 import { useEffect, useState } from "react";
-import useAuth from "../../hooks/useAuth";
-
+// import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+// import './HomePage.css'
 
 const HomePage = () => {
   const [location, setLocation] = useState('')
@@ -29,7 +28,6 @@ const HomePage = () => {
     let url = 'http://127.0.0.1:8000/api/games/'
     let response = await axios.get(url)
     console.log(response.data)
-    // debugger
     setGames(response.data)
   }
   console.log(games)
@@ -41,7 +39,7 @@ const HomePage = () => {
   
   return (
     <div className="container">
-      <h1>Home Page for <strong>NextGame</strong>!</h1>
+      <h1>Home Page for NextGame!</h1>
       <SearchBar setLocation={setLocation} getResultsFromLocation={getResultsFromLocation} location={location} />
       <SearcMap/>
       <GameList games={games}/>
