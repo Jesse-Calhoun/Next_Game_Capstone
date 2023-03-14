@@ -10,7 +10,7 @@ import axios from "axios";
 const HomePage = () => {
   const [location, setLocation] = useState('')
   const [gameAddress, setGameAddress] = useState('')
-  const [games, setGames] = useState([{}])
+  const [games, setGames] = useState([])
   
   async function getResultsFromLocation(){
     let url = 'https://maps.googleapis.com/maps/api/geocode/json'
@@ -34,7 +34,10 @@ const HomePage = () => {
 
   useEffect(() =>{
     getAllGames()
-  }, [])
+    // return () => {
+    //   setGames([])
+    // }
+  }, [games])
   
   
   return (

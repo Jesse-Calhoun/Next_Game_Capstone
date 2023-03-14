@@ -12,7 +12,7 @@ const CommentList = ({ game }) => {
 
     useEffect(()=>{
         getAllComments();
-    }, [])
+    }, [comments])
 
     let commentList = comments.map((comment) => <Comment comment={comment}/>)
     return ( 

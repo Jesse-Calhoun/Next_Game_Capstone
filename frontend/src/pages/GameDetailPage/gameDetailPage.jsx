@@ -26,18 +26,25 @@ const GameDetailPage = () => {
     // debugger
     
     async function getCreator(){
-        let url = `http://127.0.0.1:8000/api/auth/users/${game.user_id}/`
-        let response = await axios.get(url)
-        // console.log(response.data)
-        setCreator(response.data.username)
+        try{
+            let url = `http://127.0.0.1:8000/api/auth/users/${game.user_id}/`
+            let response = await axios.get(url)
+            // console.log(response.data)
+            setCreator(response.data.username)
+        } catch(ex){
+            console.log(`ERROR in getAllGames EXCEPTION: ${ex}`)
+        }
     }
 
     useEffect(() =>{
         getGame();
-        // getCreator();
     }, [gameId])
 
-    getCreator()
+    useEffect(() =>{
+        getCreator();
+    }, [game])
+
+    
     function boolToWord(boolean){
         if (boolean){
             return 'Yes'
