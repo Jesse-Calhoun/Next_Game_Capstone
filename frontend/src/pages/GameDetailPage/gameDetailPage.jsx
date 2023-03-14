@@ -54,7 +54,7 @@ const GameDetailPage = () => {
                     <h3>Game Type: {game.game_type}</h3>
                     <h3>Indoor: {boolToWord(game.indoor)}</h3>
                     <h3>Next: {boolToWord(game.next)}</h3>
-                    <CommentList/>
+                    <CommentList game={game}/>
                     <CommentForm game={game} user={user} token={token} config={config} />
                 </div>
             );
