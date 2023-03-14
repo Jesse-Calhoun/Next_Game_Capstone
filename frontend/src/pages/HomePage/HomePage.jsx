@@ -20,17 +20,17 @@ const HomePage = () => {
         key: 'AIzaSyAb0px8sbcowCzfrFcQL1FSTRBv8kKuUnc'
       }
     });
-    console.log(response.data)
+    // console.log(response.data)
     setGameAddress(response.data.results[0].formatted_address)
   }
   
   async function getAllGames(){
     let url = 'http://127.0.0.1:8000/api/games/'
     let response = await axios.get(url)
-    console.log(response.data)
+    // console.log(response.data)
     setGames(response.data)
   }
-  console.log(games)
+  // console.log(games)
 
   useEffect(() =>{
     getAllGames()

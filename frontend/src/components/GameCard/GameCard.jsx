@@ -8,10 +8,15 @@ const GameCard = ({ game }) => {
     async function getUserName(){
         let url = `http://127.0.0.1:8000/api/auth/users/${game.user_id}/`
         let response = await axios.get(url)
-        console.log(response.data)
+        // console.log(response.data)
         setUsername(response.data.username)
         
     }
+
+    useEffect(() =>{
+        getUserName()
+    }, [game])
+
 
     function handleClick(){
         navigate(`/gamedetails/${game.id}`)
@@ -20,7 +25,7 @@ const GameCard = ({ game }) => {
     // let attendees = game.attendees.map(attendee => getUserName())
 
     
-    if (game){ getUserName()
+    // if (game){ getUserName()
         return ( 
             <div key={game.id} onClick={handleClick} className='gamecards'>
                 <div>
@@ -34,7 +39,7 @@ const GameCard = ({ game }) => {
                 </div>
             </div>
         );
-    }
+    // } 
 }
  
 export default GameCard;
