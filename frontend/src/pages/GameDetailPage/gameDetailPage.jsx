@@ -1,10 +1,14 @@
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
+import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import CommentList from '../../components/CommentList/CommentList';
+import CommentForm from '../../components/CommentForm/CommentForm'
 
 
 const GameDetailPage = () => {
     const { gameId } = useParams();
+    const [user, token, config] = useAuth();
     const [game, setGame] = useState(null)
     const [creator, setCreator] = useState('')
     
@@ -50,6 +54,8 @@ const GameDetailPage = () => {
                     <h3>Game Type: {game.game_type}</h3>
                     <h3>Indoor: {boolToWord(game.indoor)}</h3>
                     <h3>Next: {boolToWord(game.next)}</h3>
+                    <CommentList/>
+                    <CommentForm game={game} user={user} token={token} config={config} />
                 </div>
             );
         }
