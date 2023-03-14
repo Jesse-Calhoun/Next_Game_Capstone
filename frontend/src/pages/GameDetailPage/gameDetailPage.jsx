@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import CommentList from '../../components/CommentList/CommentList';
-import CommentForm from '../../components/CommentForm/CommentForm'
+import CommentForm from '../../components/CommentForm/CommentForm';
+import AttendeesList from '../../components/AttendeesList/AttendeesList';
 
 
 const GameDetailPage = () => {
@@ -11,6 +12,7 @@ const GameDetailPage = () => {
     const [user, token, config] = useAuth();
     const [game, setGame] = useState(null)
     const [creator, setCreator] = useState('')
+
     
     async function getGame(){
         try {
@@ -18,6 +20,7 @@ const GameDetailPage = () => {
             let response = await axios.get(url)
             // console.log(response.data)
             setGame(response.data)
+
         } catch(ex){
             console.log(`ERROR in getAllGames EXCEPTION: ${ex}`)
         }
@@ -63,6 +66,7 @@ const GameDetailPage = () => {
                     <h3>Next: {boolToWord(game.next)}</h3>
                     <CommentList game={game}/>
                     <CommentForm game={game} user={user} token={token} config={config} />
+                    <AttendeesList game={game}/>
                 </div>
             );
         }
