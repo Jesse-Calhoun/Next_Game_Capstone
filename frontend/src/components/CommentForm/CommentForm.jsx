@@ -3,13 +3,14 @@ import axios from "axios";
 import { useState } from "react";
 
 
-const CommentForm = ({ game, user, token, config }) => {
+const CommentForm = ({ game, user, token, config, getAllComments }) => {
     const [comment, setComment] = useState('')
 
     async function postNewComment(newComment){
         let url = `http://127.0.0.1:8000/api/games/${game.id}/comments/create/`
         let response = await axios.post(url, newComment, config)
         console.log(response)
+        getAllComments()
     }
 
     function handleNewComment(event) {

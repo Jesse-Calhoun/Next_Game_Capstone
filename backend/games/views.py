@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import Game
+from .models import User
 from .serializers import GameSerializer
 
 # Create your views here.
@@ -48,14 +49,14 @@ def edit_game(request, pk):
                 return Response(status=status.HTTP_204_NO_CONTENT)
         return Response('Unauthorized request.', status=status.HTTP_401_UNAUTHORIZED)
 
-@api_view(['PUT'])
+@api_view(['PATCH'])
 @permission_classes([IsAuthenticated])
 def join_game(request, pk):
         game = get_object_or_404(Game, pk=pk)
-        # newAttendees = game.attendees.add(request.user)
-        serializer = GameSerializer(game, data=request.data)
-        if serializer.is_valid():
-            serializer.save(user=request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
-# newAttendees = 
+        user = get_object_or_404(User, id=request.user.id)
+        if game.attendees.contains(user):
+                game.attendees.remove(user)
+        else:
+                game.attendees.add(user)
+        serializer = GameSerializer(game)
+        return Response(serializer.data, status.HTTP_201_CREATED)

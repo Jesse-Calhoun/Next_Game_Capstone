@@ -13,7 +13,7 @@ const GameDetailPage = () => {
     const [user, token, config] = useAuth();
     const [game, setGame] = useState(null)
     const [creator, setCreator] = useState('')
-
+    const [comments, setComments] = useState([]);
     
     async function getGame(){
         try {
@@ -38,6 +38,11 @@ const GameDetailPage = () => {
         } catch(ex){
             console.log(`ERROR in getAllGames EXCEPTION: ${ex}`)
         }
+    }
+
+    async function getAllComments() {
+        let response = await axios.get(`http://127.0.0.1:8000/api/games/${game.id}/comments/`);
+        setComments(response.data);
     }
 
     useEffect(() =>{
@@ -65,10 +70,10 @@ const GameDetailPage = () => {
                     <h3>Game Type: {game.game_type}</h3>
                     <h3>Indoor: {boolToWord(game.indoor)}</h3>
                     <h3>Next: {boolToWord(game.next)}</h3>
-                    <CommentList game={game}/>
-                    <CommentForm game={game} user={user} token={token} config={config} />
+                    <CommentList getAllComments={getAllComments} comments={comments}/>
+                    <CommentForm game={game} user={user} token={token} config={config} getAllComments={getAllComments}/>
                     <AttendeesList game={game}/>
-                    <JoinGameButton game={game} user={user} token={token} config={config}/>
+                    <JoinGameButton game={game} user={user} token={token} config={config} getGame={getGame}/>
                 </div>
             );
         }

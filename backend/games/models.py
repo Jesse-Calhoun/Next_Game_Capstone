@@ -10,4 +10,4 @@ class Game(models.Model):
     game_type = models.CharField(max_length=200)
     next = models.BooleanField()
     indoor = models.BooleanField()
-    attendees = models.ManyToManyField(User, related_name='games')
+    attendees = models.ManyToManyField(User, related_name='attendees', blank=True)
