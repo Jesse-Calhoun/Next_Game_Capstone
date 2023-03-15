@@ -136,6 +136,134 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Edit user (follow_user)(protected)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5NzczMzQ1LCJpYXQiOjE2Nzg5MDkzNDUsImp0aSI6IjI2MjI5MjdlMTY5YzQxYmM4ZTZkM2VlM2E4YTE3ZDA0IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJKZXNzZUNhbGhvdW4iLCJmaXJzdF9uYW1lIjoiSmVzc2UifQ.yn8pTjH2KwU1GXFKz7_jjY4mV14JzEOaJCxGKy7zAHo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/users/2/follow/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"users",
+								"2",
+								"follow",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user by id(protected)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5MzI2NTg5LCJpYXQiOjE2Nzg0NjI1ODksImp0aSI6ImU3MThiMmNjY2Q4YzQ2MmJhNTc2NzEyOTcyOTQ5OGY0IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJKZXNzZUNhbGhvdW4iLCJmaXJzdF9uYW1lIjoiSmVzc2UifQ.J4P26eBNbj0xtcyK2WhiqnCBQJX7FAbDkX63UWJZvHI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/users/2/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"users",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit User(protected)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5NzczMzQ1LCJpYXQiOjE2Nzg5MDkzNDUsImp0aSI6IjI2MjI5MjdlMTY5YzQxYmM4ZTZkM2VlM2E4YTE3ZDA0IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJKZXNzZUNhbGhvdW4iLCJmaXJzdF9uYW1lIjoiSmVzc2UifQ.yn8pTjH2KwU1GXFKz7_jjY4mV14JzEOaJCxGKy7zAHo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"username\": \"JesseCalhoun\",\n    \"password\": \"Jimafer2736!\",\n    \"email\": \"jesse2736james@gmail.com\",\n    \"friends\": [\n        {\n            \"id\": 2,\n            \"username\": \"dantheman\",\n            \"friends\": []\n        },\n        {\n            \"id\": 3,\n            \"username\": \"ThatGuy123\",\n            \"friends\": []\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/users/1/edit/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"users",
+								"1",
+								"edit",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -284,13 +412,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5MDc0ODE5LCJpYXQiOjE2NzgyMTA4MTksImp0aSI6ImY1ZTNhM2VhNTFjMDRmYzc5M2Y5NzZkOTJiNzY1ZWRjIiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJKZXNzZUNhbGhvdW4iLCJmaXJzdF9uYW1lIjoiSmVzc2UifQ.QSAbho8SVgDcKVzp-KFbdavrX5WPpV1-vdGmk4X7Ql0",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5Njk0NzI4LCJpYXQiOjE2Nzg4MzA3MjgsImp0aSI6IjBiNDNiNTE5MGMyMjQ1OTlhNTdmMGZmODYxMThlNmQxIiwidXNlcl9pZCI6NCwidXNlcm5hbWUiOiJZb3VyZU5vdFRoYXRHdXkiLCJmaXJzdF9uYW1lIjoiR2VvcmdlIn0.gLhUxNscYclY2WfIUCANilMgd3BznKJupMu74276dSw",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"address\": \"Connecticut Sports Arena New Milford, Ct\",\n    \"date_time\": \"2023-03-08T11:30:00Z\",\n    \"game_type\": \"Looking for 2 on 2, half court, game to 11, 2 pointers equal 1 point and 3 pointers equal 2. Make it take it.\",\n    \"players_at_game\": \"3\",\n    \"next\": \"False\",\n    \"indoor\": \"False\",\n    \"attendees\": [\n        1,\n        2,\n        3\n    ]\n}",
+							"raw": "{\n    \"address\": \"Connecticut Sports Arena New Milford, Ct\",\n    \"date_time\": \"2023-03-14T08:30:00Z\",\n    \"game_type\": \"Looking for 2 on 2, half court, game to 11, 2 pointers equal 1 point and 3 pointers equal 2. Make it take it.\",\n    \"players_at_game\": \"3\",\n    \"next\": \"False\",\n    \"indoor\": \"False\",\n    \"attendees\": [\n        {\n            \"id\": 4,\n            \"password\": \"pbkdf2_sha256$390000$qHjd4bcAj7apjgL6r51DT8$3i69CXzVhzTvxZx7evDOz3J8xKkghEZl4is63630soc=\",\n            \"last_login\": null,\n            \"is_superuser\": false,\n            \"username\": \"YoureNotThatGuy\",\n            \"first_name\": \"George\",\n            \"last_name\": \"Johnson\",\n            \"email\": \"johnsonandjohnson@mail.com\",\n            \"is_staff\": false,\n            \"is_active\": true,\n            \"date_joined\": \"2023-03-07T17:09:52.067544Z\",\n            \"groups\": [],\n            \"user_permissions\": [],\n            \"friends\": []\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -330,7 +458,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/games/1",
+							"raw": "http://127.0.0.1:8000/api/games/11/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -342,7 +470,8 @@
 							"path": [
 								"api",
 								"games",
-								"1"
+								"11",
+								""
 							]
 						}
 					},
@@ -355,7 +484,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5MDc0ODE5LCJpYXQiOjE2NzgyMTA4MTksImp0aSI6ImY1ZTNhM2VhNTFjMDRmYzc5M2Y5NzZkOTJiNzY1ZWRjIiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJKZXNzZUNhbGhvdW4iLCJmaXJzdF9uYW1lIjoiSmVzc2UifQ.QSAbho8SVgDcKVzp-KFbdavrX5WPpV1-vdGmk4X7Ql0",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5Njk0NzI4LCJpYXQiOjE2Nzg4MzA3MjgsImp0aSI6IjBiNDNiNTE5MGMyMjQ1OTlhNTdmMGZmODYxMThlNmQxIiwidXNlcl9pZCI6NCwidXNlcm5hbWUiOiJZb3VyZU5vdFRoYXRHdXkiLCJmaXJzdF9uYW1lIjoiR2VvcmdlIn0.gLhUxNscYclY2WfIUCANilMgd3BznKJupMu74276dSw",
 								"type": "text"
 							}
 						],
@@ -369,7 +498,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/games/2/edit/",
+							"raw": "http://127.0.0.1:8000/api/games/7/edit/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -381,7 +510,7 @@
 							"path": [
 								"api",
 								"games",
-								"2",
+								"7",
 								"edit",
 								""
 							]
@@ -392,11 +521,11 @@
 				{
 					"name": "Join game(protected)",
 					"request": {
-						"method": "POST",
+						"method": "PATCH",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5MDg4NjE3LCJpYXQiOjE2NzgyMjQ2MTcsImp0aSI6ImM5NGUwODczZTVlYjQxZTU5Yjk2M2FkYTk0OTAzZDg0IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJKZXNzZUNhbGhvdW4iLCJmaXJzdF9uYW1lIjoiSmVzc2UifQ.Opxqc7U9p2eShdNxL1Zli8pBXwvcUK1eAVqBs57fkOc",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5NzU3NjUxLCJpYXQiOjE2Nzg4OTM2NTEsImp0aSI6ImNkZTMwYjU1NGVkMDQ1NGY5YzdmMjdiMGM1Zjg2ZTEyIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJUaGF0R3V5MTIzIiwiZmlyc3RfbmFtZSI6IkplZmYifQ.GmYs-lDOu1FKYPaw7IeNkT14kJFU8pmUcyEIumPZSjI",
 								"type": "text"
 							}
 						],
@@ -410,7 +539,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/games/4/join/",
+							"raw": "http://127.0.0.1:8000/api/games/11/join/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -422,7 +551,7 @@
 							"path": [
 								"api",
 								"games",
-								"4",
+								"11",
 								"join",
 								""
 							]
@@ -437,12 +566,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5MDg4NjE3LCJpYXQiOjE2NzgyMjQ2MTcsImp0aSI6ImM5NGUwODczZTVlYjQxZTU5Yjk2M2FkYTk0OTAzZDg0IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJKZXNzZUNhbGhvdW4iLCJmaXJzdF9uYW1lIjoiSmVzc2UifQ.Opxqc7U9p2eShdNxL1Zli8pBXwvcUK1eAVqBs57fkOc",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5NjAwNTkxLCJpYXQiOjE2Nzg3MzY1OTEsImp0aSI6ImJiZmJlNDMyNDk3MjRjZGU4NTQ4MTNlYjg5NjlmMmM2IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.pRX5xS7SV1LOS0AzVKlOjyMyZ4YDZw8YsLDqRu_s52o",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/games/1/edit/",
+							"raw": "http://127.0.0.1:8000/api/games/4/edit/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -454,7 +583,7 @@
 							"path": [
 								"api",
 								"games",
-								"1",
+								"4",
 								"edit",
 								""
 							]
@@ -473,7 +602,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/games/4/comments/",
+							"raw": "http://127.0.0.1:8000/api/games/6/comments/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -485,7 +614,7 @@
 							"path": [
 								"api",
 								"games",
-								"4",
+								"6",
 								"comments",
 								""
 							]
@@ -514,7 +643,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/games/4/comments/create/",
+							"raw": "http://127.0.0.1:8000/api/games/6/comments/create/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -526,10 +655,48 @@
 							"path": [
 								"api",
 								"games",
-								"4",
+								"6",
 								"comments",
 								"create",
 								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Api requests",
+			"item": [
+				{
+					"name": "Geocoding Get request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyAb0px8sbcowCzfrFcQL1FSTRBv8kKuUnc",
+							"protocol": "https",
+							"host": [
+								"maps",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"maps",
+								"api",
+								"geocode",
+								"json"
+							],
+							"query": [
+								{
+									"key": "address",
+									"value": "1600+Amphitheatre+Parkway,+Mountain+View,+CA"
+								},
+								{
+									"key": "key",
+									"value": "AIzaSyAb0px8sbcowCzfrFcQL1FSTRBv8kKuUnc"
+								}
 							]
 						}
 					},

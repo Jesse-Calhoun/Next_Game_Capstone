@@ -72,7 +72,7 @@ const GameDetailPage = () => {
                     <h3>Next: {boolToWord(game.next)}</h3>
                     <CommentList getAllComments={getAllComments} comments={comments}/>
                     <CommentForm game={game} user={user} token={token} config={config} getAllComments={getAllComments}/>
-                    <AttendeesList game={game}/>
+                    <AttendeesList game={game} getGame={getGame}/>
                     <JoinGameButton game={game} user={user} token={token} config={config} getGame={getGame}/>
                 </div>
             );
