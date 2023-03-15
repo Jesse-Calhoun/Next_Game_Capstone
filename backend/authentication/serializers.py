@@ -66,5 +66,5 @@ class UserSerializer(serializers.ModelSerializer):
     friends = FriendSerializer(read_only=True, many=True)
     class Meta:
         model = User
-        fields = ['id', 'username', 'friends']
+        fields = ['id', 'username', 'email', 'friends']
         depth = 1

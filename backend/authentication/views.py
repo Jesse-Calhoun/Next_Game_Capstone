@@ -35,13 +35,38 @@ def get_user_by_id(request, pk):
     serializer = UserSerializer(user)
     return Response(serializer.data)
 
+# @api_view(['PUT'])
+# @permission_classes([IsAuthenticated])
+# def e
+
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def edit_user(request):
+def edit_user(request, pk):
     user = get_object_or_404(User, id=request.user.id)
-    user.friends.clear()
-    user.friends.add(*request.data['friends'])
     serializer = UserSerializer(user, data=request.data)
     serializer.is_valid(raise_exception=True)
     serializer.save()
-    return Response(serializer.data, status=status.HTTP_200_OK)
+    return Response(serializer.data)
+    
+@api_view(['PATCH'])
+@permission_classes([IsAuthenticated])
+def follow_user(request, pk):
+    user = get_object_or_404(User, id=request.user.id)
+    friend = get_object_or_404(User, id=pk)
+    if user.friends.contains(friend):
+        user.friends.remove(friend)
+    else:
+        user.friends.add(friend)
+    serializer = UserSerializer(user)
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+
+
+
+    # user.friends.clear()
+    # user.friends.add(*request.data['friends'])
+    # serializer = UserSerializer(user, data=request.data)
+    # serializer.is_valid(raise_exception=True)
+    # serializer.save()
+    # return Response(serializer.data, status=status.HTTP_200_OK)
