@@ -2,11 +2,14 @@ import React from 'react';
 import Attendee from "../Attendee/Attendee";
 
 const AttendeesList = ({game}) => {
-    console.log(game.attendees)
+    // console.log(game.attendees)
 
     let attendeesNames = game.attendees.map((attendee) => <Attendee attendee={attendee}/>) 
     return ( 
-        <div>{attendeesNames}</div>
+        <div>
+            <h3>Players</h3>
+            {attendeesNames}
+        </div>
      );
 }
  

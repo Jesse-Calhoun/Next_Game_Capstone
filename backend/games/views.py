@@ -48,12 +48,14 @@ def edit_game(request, pk):
                 return Response(status=status.HTTP_204_NO_CONTENT)
         return Response('Unauthorized request.', status=status.HTTP_401_UNAUTHORIZED)
 
-@api_view(['POST'])
+@api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def join_game(request, pk):
         game = get_object_or_404(Game, pk=pk)
-        game.attendees.add(request.user)
-        serializer = GameSerializer(game)
-        # serializer.is_valid()
-        # serializer.save()
-        return Response(serializer.data)
+        # newAttendees = game.attendees.add(request.user)
+        serializer = GameSerializer(game, data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+# newAttendees = 

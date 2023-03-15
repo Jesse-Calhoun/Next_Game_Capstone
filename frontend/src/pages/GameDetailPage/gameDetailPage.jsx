@@ -5,6 +5,7 @@ import axios from "axios";
 import CommentList from '../../components/CommentList/CommentList';
 import CommentForm from '../../components/CommentForm/CommentForm';
 import AttendeesList from '../../components/AttendeesList/AttendeesList';
+import JoinGameButton from '../../components/JoinGameButton/JoinGameButton';
 
 
 const GameDetailPage = () => {
@@ -67,6 +68,7 @@ const GameDetailPage = () => {
                     <CommentList game={game}/>
                     <CommentForm game={game} user={user} token={token} config={config} />
                     <AttendeesList game={game}/>
+                    <JoinGameButton game={game} user={user} token={token} config={config}/>
                 </div>
             );
         }
