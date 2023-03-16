@@ -1,7 +1,7 @@
-import Friend from "../../Friend/Friend";
+import Friend from "../Friend/Friend";
 
-const FriendsList = ({ registeredPlayer, getPlayerById }) => {
-    let registeredFriends = registeredPlayer.friends.map((registeredFriend) => <Friend registeredFriend={registeredFriend} registeredPlayer={registeredPlayer} getPlayerById={getPlayerById}/>)
+const FriendsList = ({ registeredPlayer }) => {
+    let registeredFriends = registeredPlayer.friends.map((registeredFriend) => <Friend registeredFriend={registeredFriend} registeredPlayer={registeredPlayer}/>)
     return ( 
         <div>
             <h3>Friends List:</h3>

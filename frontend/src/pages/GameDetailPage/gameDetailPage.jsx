@@ -19,7 +19,6 @@ const GameDetailPage = () => {
         try {
             let url = `http://127.0.0.1:8000/api/games/${gameId}/`
             let response = await axios.get(url)
-            // console.log(response.data)
             setGame(response.data)
 
         } catch(ex){
@@ -27,13 +26,11 @@ const GameDetailPage = () => {
         }
     }
     console.log(game)
-    // debugger
     
     async function getCreator(){
         try{
             let url = `http://127.0.0.1:8000/api/auth/users/${game.user_id}/`
             let response = await axios.get(url)
-            // console.log(response.data)
             setCreator(response.data.username)
         } catch(ex){
             console.log(`ERROR in getAllGames EXCEPTION: ${ex}`)
