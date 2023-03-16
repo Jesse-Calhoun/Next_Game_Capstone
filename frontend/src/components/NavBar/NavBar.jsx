@@ -16,12 +16,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          {user ? (
-            <button onClick={() => navigate(`/profile/${user.id}`)}>Profile</button>
-          ) : (
-            <button onClick={() => navigate('/login')} >Profile</button>
-          )
-        }
+          {user && (<button onClick={() => navigate(`/profile/${user.id}`)}>Profile</button>)}
         </li>
         <li>
           {user ? (
