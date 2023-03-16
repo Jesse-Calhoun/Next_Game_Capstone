@@ -9,8 +9,10 @@ import axios from "axios";
 
 const HomePage = () => {
   const [location, setLocation] = useState('')
-  const [gameAddress, setGameAddress] = useState('')
+  const [gameAddress, setGameAddress] = useState(null)
   const [games, setGames] = useState([])
+  const [searchedLat, setSearchedLat] = useState(42.1034769)
+  const [searchedLong, setSearchedLong] = useState(-72.5557675)
   
   async function getResultsFromLocation(){
     let url = 'https://maps.googleapis.com/maps/api/geocode/json'
@@ -20,10 +22,13 @@ const HomePage = () => {
         key: 'AIzaSyAb0px8sbcowCzfrFcQL1FSTRBv8kKuUnc'
       }
     });
-    // console.log(response.data)
-    setGameAddress(response.data.results[0].formatted_address)
+    console.log(response.data)
+    // setGameAddress(response.data.results[0])
+    setSearchedLat(response.data.results[0].geometry.location.lat)
+    setSearchedLong(response.data.results[0].geometry.location.lng)
   }
-  
+
+
   async function getAllGames(){
     let url = 'http://127.0.0.1:8000/api/games/'
     let response = await axios.get(url)
@@ -44,7 +49,7 @@ const HomePage = () => {
     <div className="container">
       <h1>Home Page for NextGame!</h1>
       <SearchBar setLocation={setLocation} getResultsFromLocation={getResultsFromLocation} location={location} />
-      <SearcMap/>
+      <SearcMap searchedLat={searchedLat} searchedLong={searchedLong} />
       <GameList games={games}/>
     </div>
   );

@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import './SearchMap.css'
 
-const SearcMap = () => {
+const SearcMap = ({ searchedLat, searchedLong }) => {
     let map;
     let google = window.google
     
     
     function initMap() {
         map = new google.maps.Map(document.getElementById("map"), 
-        {center: { lat: 41.5771034, lng: -73.4147061 },
+        {center: { lat: searchedLat, lng: searchedLong },
         zoom: 10,
         });
     }
@@ -16,7 +16,11 @@ const SearcMap = () => {
 
 useEffect(()=>{
     initMap();
-    }, [])
+    }, [searchedLat])
+
+useEffect(() =>{
+    initMap();
+}, [searchedLong])
 return ( 
         <div id='map'>
             
