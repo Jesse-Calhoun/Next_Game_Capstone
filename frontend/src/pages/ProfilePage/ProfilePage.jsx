@@ -19,7 +19,7 @@ const ProfilePage = () => {
 
     useEffect(() =>{
         getPlayerById(userId);
-    }, [registeredPlayer.friends])
+    }, [registeredPlayer])
 
     if (registeredPlayer){
         return ( 
