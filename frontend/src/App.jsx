@@ -22,7 +22,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route
-          path="/profile"
+          path="/profile/:userId"
           element={
             <PrivateRoute>
               <ProfilePage/>

@@ -26,7 +26,7 @@ class RegisterView(generics.CreateAPIView):
 def get_all_users(request):
     users = User.objects.all()
     serializer = RegistrationSerializer(users, many=True)
-    return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
