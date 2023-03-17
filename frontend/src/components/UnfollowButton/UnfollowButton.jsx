@@ -1,7 +1,6 @@
 import useAuth from "../../hooks/useAuth";
 import axios from 'axios';
 
-
 const UnfollowButton = ({ registeredFriend }) => {
     const [user, token, config] = useAuth();
 

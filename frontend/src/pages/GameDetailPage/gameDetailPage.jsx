@@ -57,6 +57,10 @@ const GameDetailPage = () => {
         }
         return 'No'
     }
+
+    useEffect(()=>{
+        getAllComments();
+    }, [])
     
     if(game){
         return ( 
@@ -67,7 +71,7 @@ const GameDetailPage = () => {
                     <h3>Game Type: {game.game_type}</h3>
                     <h3>Indoor: {boolToWord(game.indoor)}</h3>
                     <h3>Next: {boolToWord(game.next)}</h3>
-                    <CommentList getAllComments={getAllComments} comments={comments}/>
+                    <CommentList comments={comments}/>
                     <CommentForm game={game} user={user} token={token} config={config} getAllComments={getAllComments}/>
                     <AttendeesList game={game} getGame={getGame}/>
                     <JoinGameButton game={game} user={user} token={token} config={config} getGame={getGame}/>
