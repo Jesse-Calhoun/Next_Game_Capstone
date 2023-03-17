@@ -16,7 +16,7 @@ const HomePage = () => {
   const [searchedLong, setSearchedLong] = useState(-72.5557675)
   const [gameLat, setGameLat] = useState(0)
   const [gameLong, setGameLong] = useState(0)
-  // const [markers, setMarkers] = useState{{}}
+  const markers = [{}]
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: 'AIzaSyAb0px8sbcowCzfrFcQL1FSTRBv8kKuUnc'
   })
@@ -43,31 +43,28 @@ const HomePage = () => {
         key: 'AIzaSyAb0px8sbcowCzfrFcQL1FSTRBv8kKuUnc'
       }
     })
-    let marker = {lat:response.data.results[0].geometry.location.lat, lng:response.data.results[0].geometry.location.lng}
-    // markers.
+    // markers.push(response.data.results[0].geometry.location)
+    console.log(response.data.results[0].geometry.location)
     setGameLat(response.data.results[0].geometry.location.lat)
     setGameLong(response.data.results[0].geometry.location.lng)
-    return marker
   }
-  
+  // console.log(markers)
   async function getAllGames(){
     let url = 'http://127.0.0.1:8000/api/games/'
     let response = await axios.get(url)
     // console.log(response.data)
     setGames(response.data)
   }
-  let markers=[]
-  // let markers = games.map((game) => getResultsFromGame(game));
-  
+  // games.map(game => getResultsFromGame(game))
   
   // console.log(games)
   useEffect(() =>{
-      getResultsFromGame(games[0])
+    getResultsFromGame(games[0])
     }, [])
     console.log()
     useEffect(() =>{
     getAllGames()
-  }, [games])
+  }, [])
 
   
   if (!isLoaded){
