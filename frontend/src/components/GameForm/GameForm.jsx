@@ -50,7 +50,7 @@ const GameForm = ({ }) => {
                 <input type='datetime-local' className='short-input-field' value={dateTime}  onChange={(event) => setDateTime(event.target.value)}/>
             </div>
             <div>
-                <label>Game Type(description)</label>
+                <label>Game Type(description/rules)</label>
                 <input type="text" placeholder="Describe game rules/number of players per team..." value={gameType}  onChange={(event) => setGameType(event.target.value)}/>
             </div>
             <div>

@@ -3,6 +3,7 @@ import SearchBar from '../../components/Searchbar/SearchBar'
 import GameList from '../../components/GameList/GameList'
 import SearcMap from "../../components/SearchMap/SearchMap";
 import { useEffect, useState } from "react";
+import { Marker, useLoadScript } from '@react-google-maps/api'
 // import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 // import './HomePage.css'
@@ -13,6 +14,12 @@ const HomePage = () => {
   const [games, setGames] = useState([])
   const [searchedLat, setSearchedLat] = useState(42.1034769)
   const [searchedLong, setSearchedLong] = useState(-72.5557675)
+  const [gameLat, setGameLat] = useState(0)
+  const [gameLong, setGameLong] = useState(0)
+  // const [markers, setMarkers] = useState{{}}
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: 'AIzaSyAb0px8sbcowCzfrFcQL1FSTRBv8kKuUnc'
+  })
   
   async function getResultsFromLocation(){
     let url = 'https://maps.googleapis.com/maps/api/geocode/json'
@@ -27,32 +34,62 @@ const HomePage = () => {
     setSearchedLat(response.data.results[0].geometry.location.lat)
     setSearchedLong(response.data.results[0].geometry.location.lng)
   }
-
-
+  
+  async function getResultsFromGame(game){
+    let url = 'https://maps.googleapis.com/maps/api/geocode/json'
+    let response = await axios.get(url, {
+      params: {
+        address: game.address,
+        key: 'AIzaSyAb0px8sbcowCzfrFcQL1FSTRBv8kKuUnc'
+      }
+    })
+    let marker = {lat:response.data.results[0].geometry.location.lat, lng:response.data.results[0].geometry.location.lng}
+    // markers.
+    setGameLat(response.data.results[0].geometry.location.lat)
+    setGameLong(response.data.results[0].geometry.location.lng)
+    return marker
+  }
+  
   async function getAllGames(){
     let url = 'http://127.0.0.1:8000/api/games/'
     let response = await axios.get(url)
     // console.log(response.data)
     setGames(response.data)
   }
+  let markers=[]
+  // let markers = games.map((game) => getResultsFromGame(game));
+  
+  
   // console.log(games)
-
   useEffect(() =>{
+      getResultsFromGame(games[0])
+    }, [])
+    console.log()
+    useEffect(() =>{
     getAllGames()
-    // return () => {
-    //   setGames([])
-    // }
   }, [games])
+
   
-  
-  return (
-    <div className="container">
-      <h1>Home Page for NextGame!</h1>
-      <SearchBar setLocation={setLocation} getResultsFromLocation={getResultsFromLocation} location={location} />
-      <SearcMap searchedLat={searchedLat} searchedLong={searchedLong} />
-      <GameList games={games}/>
-    </div>
-  );
+  if (!isLoaded){
+    return (
+      <div className="container">
+        <h1>Home Page for NextGame!</h1>
+        <SearchBar setLocation={setLocation} getResultsFromLocation={getResultsFromLocation} location={location} />
+        <div>Loading...</div>
+        <GameList games={games}/>
+      </div>
+    );
+  }
+  else{
+    return (
+      <div className="container">
+        <h1>Home Page for NextGame!</h1>
+        <SearchBar setLocation={setLocation} getResultsFromLocation={getResultsFromLocation} location={location} />
+        <SearcMap searchedLat={searchedLat} searchedLong={searchedLong} games={games} getResultsFromGame={getResultsFromGame} gameLat={gameLat} gameLong={gameLong} markers={markers} />
+        <GameList games={games}/>
+      </div>
+    );
+  }
 };
 
 export default HomePage;
