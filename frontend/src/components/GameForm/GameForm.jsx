@@ -12,25 +12,12 @@ const GameForm = ({ }) => {
     const [next, setNext] = useState(false)
     const [indoor, setIndoor] = useState(false)
     const [attendees, setAttendees] = useState(undefined)
-    // const [allUsers, setAllUsers] = useState(null)
 
     async function postNewGame(newGame){
         let url = `http://127.0.0.1:8000/api/games/create_game/`
         let response = await axios.post(url, newGame, config)
         console.log(response)
     }
-    
-    // async function getAllUsers(){
-    //     let url = `http://127.0.0.1:8000/api/auth/users/`
-    //     let response = await axios.get(url)
-    //     setAllUsers(response.data)
-
-    // }
-
-    // async function getAttendee(username){
-    //     let user = 
-    //     let url = `http://127.0.0.1:8000/api/auth/users/${user.id}/`
-    // }
 
     function handlePostGame(event){
         if (token){
@@ -50,8 +37,6 @@ const GameForm = ({ }) => {
             alert('Incorrect input')
         }
     }
-
-
 
     return ( 
         <form onSubmit={handlePostGame}>
@@ -76,10 +61,6 @@ const GameForm = ({ }) => {
                 <label>Indoor</label>
                 <input type='checkbox' className='check-box-input' value={indoor}  onChange={(event) => setIndoor(!indoor)}/>
             </div>
-            {/* <div>
-                <label>Attendees</label>
-                <input type='text' placeholder='Input usernames of the players attending' value={attendees}  onChange={(event) => setAttendees(event.target.value)}/>
-            </div> */}
             <button type='submit'>Create Game</button>
         </form>
      );
