@@ -15,8 +15,6 @@ const GameDetailPage = () => {
     const [game, setGame] = useState(null)
     const [creator, setCreator] = useState('')
     const [comments, setComments] = useState([]);
-    // let m = moment(game.date_time, 'YYYY-MM-DD hh:mm:ssA')
-    // let m = moment(game.date_time, 'YYYY-MM-DD hh:mm:ssA')
     
     async function getGame(){
         try {
@@ -28,7 +26,6 @@ const GameDetailPage = () => {
             console.log(`ERROR in getAllGames EXCEPTION: ${ex}`)
         }
     }
-    console.log(game)
     
     async function getCreator(){
         try{
@@ -52,7 +49,6 @@ const GameDetailPage = () => {
     useEffect(() =>{
         getCreator();
     }, [game])
-
     
     function boolToWord(boolean){
         if (boolean){

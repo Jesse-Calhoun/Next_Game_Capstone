@@ -4,14 +4,12 @@ import useAuth from '../../hooks/useAuth'
 import './GameForm.css'
 
 const GameForm = ({ }) => {
-    const { userId } = useAuth()
     const [user, token, config] = useAuth();
     const [address, setAddress] = useState('')
     const [dateTime, setDateTime] = useState('')
     const [gameType, setGameType] = useState('')
     const [next, setNext] = useState(false)
     const [indoor, setIndoor] = useState(false)
-    // const [attendees, setAttendees] = useState(undefined)
     const [gameLat, setGameLat] = useState(0)
     const [gameLong, setGameLong] = useState(0)
 
@@ -19,7 +17,6 @@ const GameForm = ({ }) => {
         let url = `http://127.0.0.1:8000/api/games/create_game/`
         let response = await axios.post(url, newGame, config)
         console.log(response)
-        // return(response)
     }
 
     async function getResultsFromGame(address){
@@ -38,7 +35,6 @@ const GameForm = ({ }) => {
         if (token){
             event.preventDefault();
             getResultsFromGame(address)
-            // console.log(gameLat)
             let newGame = {
                 user: user,
                 address: address,
@@ -68,10 +64,6 @@ const GameForm = ({ }) => {
         }
     }
 
-    // function upDateIndoor(event){
-    //     console.log(event)
-    //     setIndoor(!indoor)
-    // }
     return ( 
         <form onSubmit={handlePostGame}>
             <h4>Create Game</h4>

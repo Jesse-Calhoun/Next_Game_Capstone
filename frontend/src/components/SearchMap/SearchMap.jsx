@@ -5,11 +5,7 @@ import GameMarker from "../GameMarker/GameMarker";
 import { useNavigate } from "react-router-dom";
 
 const SearcMap = ({ searchedLat, searchedLong, games}) => {
-    const naviagte = useNavigate()
     const center = { lat:searchedLat, lng:searchedLong}
-
-
-
 
     return (
         <GoogleMap zoom={12} center={center} mapContainerClassName='map'>

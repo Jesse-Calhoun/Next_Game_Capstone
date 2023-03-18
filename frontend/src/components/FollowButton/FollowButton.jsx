@@ -24,14 +24,6 @@ const FollowButton = ({ attendee }) => {
         }
     }
 
-    // function toggleFollowing(playerFriends, attendee){
-    //     if (playerFriends.includes(attendee)){
-    //         setFollowing(true)
-    //     }
-    //     else{
-    //         setFollowing(false)
-    //     }
-    // }
     function handleFollow(){
         if (token){
             toggleFollowPlayer()
@@ -54,11 +46,11 @@ const FollowButton = ({ attendee }) => {
         console.log('friends' +playerFriends)
     }, [])
 
-        return ( 
-            <div>
-                {following ? <button onClick={handleUnfollow}>Unfollow</button>: <button onClick={handleFollow}>Follow</button>}
-            </div>
-         );
+    return ( 
+        <div>
+            {following ? <button onClick={handleUnfollow}>Unfollow</button>: <button onClick={handleFollow}>Follow</button>}
+        </div>
+        );
 }
  
 export default FollowButton;

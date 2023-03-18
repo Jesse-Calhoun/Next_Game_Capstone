@@ -4,7 +4,7 @@ import axios from "axios";
 
 const Comment = ({ comment }) => {
     const [commenter, setCommenter] = useState('')
-    // console.log(comment)
+
 
     async function getCommenterUserName(){
         let url = `http://127.0.0.1:8000/api/auth/users/${comment.commenter_id}/`
