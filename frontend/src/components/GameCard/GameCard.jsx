@@ -2,9 +2,10 @@ import axios from 'axios'
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router";
 import './GameCard.css'
-import * as moment from 'moment'
+import moment from 'moment'
 
 const GameCard = ({ selectedGame }) => {
+    console.log(moment)
     const [username, setUsername] = useState('')
     const navigate = useNavigate()
 
