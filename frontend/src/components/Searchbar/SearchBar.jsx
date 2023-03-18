@@ -7,6 +7,7 @@ const SearchBar = ({ setLocation, getResultsFromLocation, location }) => {
     function handleSearch(event){
         event.preventDefault();
         getResultsFromLocation();
+        setLocation('')
     }
 
     return ( 

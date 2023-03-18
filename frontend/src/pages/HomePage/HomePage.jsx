@@ -3,7 +3,7 @@ import SearchBar from '../../components/Searchbar/SearchBar'
 import GameList from '../../components/GameList/GameList'
 import SearcMap from "../../components/SearchMap/SearchMap";
 import { useEffect, useState } from "react";
-import { Marker, useLoadScript } from '@react-google-maps/api'
+import { useLoadScript } from '@react-google-maps/api'
 // import Geocode from 'react-geocode'
 // import useAuth from "../../hooks/useAuth";
 import axios from "axios";
@@ -11,13 +11,13 @@ import axios from "axios";
 
 const HomePage = () => {
   const [location, setLocation] = useState('')
-  const [gameAddress, setGameAddress] = useState(null)
+  // const [gameAddress, setGameAddress] = useState(null)
   const [games, setGames] = useState([])
   const [searchedLat, setSearchedLat] = useState(42.1034769)
   const [searchedLong, setSearchedLong] = useState(-72.5557675)
-  const [gameLat, setGameLat] = useState(0)
-  const [gameLong, setGameLong] = useState(0)
-  const [markers, setMarkers] = useState([])
+  // const [gameLat, setGameLat] = useState(0)
+  // const [gameLong, setGameLong] = useState(0)
+  // const [markers, setMarkers] = useState([])
   // const markers = []
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: 'AIzaSyAb0px8sbcowCzfrFcQL1FSTRBv8kKuUnc'
@@ -28,19 +28,19 @@ const HomePage = () => {
 
   // }
 
-  const getResultsFromGame = (address) => {
-    const geocoder = new window.google.maps.Geocoder();
-    geocoder.geocode({ address }, (results, status)=>{
-      if (status === 'OK'){
-        setGameLat(results[0].geometry.location.lat)
-        setGameLong(results[0].geometry.location.lng)
-        // const { lat, lng } = results[0].geometry.location;
-        // setMarkers([...markers, { lat, lng }]);
-      } else{
-        console.error(`Geocode failed: ${status}`)
-      }
-    })
-  }
+  // const getResultsFromGame = (address) => {
+  //   const geocoder = new window.google.maps.Geocoder();
+  //   geocoder.geocode({ address }, (results, status)=>{
+  //     if (status === 'OK'){
+  //       setGameLat(results[0].geometry.location.lat)
+  //       setGameLong(results[0].geometry.location.lng)
+  //       // const { lat, lng } = results[0].geometry.location;
+  //       // setMarkers([...markers, { lat, lng }]);
+  //     } else{
+  //       console.error(`Geocode failed: ${status}`)
+  //     }
+  //   })
+  // }
   // console.log(gameAddress)
   async function getResultsFromLocation(){
     let url = 'https://maps.googleapis.com/maps/api/geocode/json'
@@ -56,17 +56,14 @@ const HomePage = () => {
     setSearchedLong(response.data.results[0].geometry.location.lng)
   }
   
-  // async function getResultsFromGame(game){
+  // async function getResultsFromGame(address){
   //   let url = 'https://maps.googleapis.com/maps/api/geocode/json'
   //   let response = await axios.get(url, {
   //     params: {
-  //       address: game.address,
+  //       address: address,
   //       key: 'AIzaSyAb0px8sbcowCzfrFcQL1FSTRBv8kKuUnc'
   //     }
   //   })
-  //   const newId = markers.length = 1
-  //   const newPosition = { lat:response.data.results[0].geometry.location.lat , lng:response.data.results[0].geometry.location.lng}
-  //   setMarkers([...markers, { id: newId[0], position: newPosition[1] }])
   //   setGameLat(response.data.results[0].geometry.location.lat)
   //   setGameLong(response.data.results[0].geometry.location.lng)
   // }
@@ -112,7 +109,7 @@ const HomePage = () => {
         <div className="container">
         <h1>Home Page for NextGame!</h1>
         <SearchBar setLocation={setLocation} getResultsFromLocation={getResultsFromLocation} location={location} />
-        <SearcMap gameLong={gameLong} gameLat={gameLat} searchedLat={searchedLat} searchedLong={searchedLong} games={games} getResultsFromGame={getResultsFromGame} markers={markers} setMarkers={setMarkers} gameAddress={gameAddress} />
+        <SearcMap searchedLat={searchedLat} searchedLong={searchedLong} games={games} />
         <GameList games={games}/>
       </div>
     );

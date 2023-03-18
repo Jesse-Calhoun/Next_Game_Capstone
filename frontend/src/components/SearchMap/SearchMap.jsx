@@ -3,23 +3,9 @@ import { GoogleMap, Marker,  } from "@react-google-maps/api"
 import './SearchMap.css'
 import GameMarker from "../GameMarker/GameMarker";
 
-const SearcMap = ({ gameLat, gameLong, searchedLat, searchedLong, games, getResultsFromGame, markers, setMarkers, gameAddress}) => {
+const SearcMap = ({ searchedLat, searchedLong, games}) => {
     const center = { lat:searchedLat, lng:searchedLong}
-
-
-    async function getMarkers(){
-        for (let i = 0; i<games.length;i++){
-            await getResultsFromGame(games[i])
-            const marker = {gameLat, gameLong}
-            setMarkers([...markers, marker])
-        }
-        // await games.map(game => {
-        //   getResultsFromGame(game.address)
-        // //   console.log(gameAddress)
-        //   const marker = {gameLat, gameLong}
-        //   setMarkers([...markers, marker])
-        // })
-    }
+    console.log(games)
     // getMarkers()
     // console.log(markers)
 
@@ -35,16 +21,13 @@ const SearcMap = ({ gameLat, gameLong, searchedLat, searchedLong, games, getResu
     //     (<Marker position={marker} />)
     // }
     return (
-        <GoogleMap zoom={10} center={center} mapContainerClassName='map'>
-            {/* {gameMarkers} */}
-            {/* {markers.map((marker) =>{
-                getResultsFromGame(game.address)
-                const marker = gameAddress.geometry.location
-                set
-                <Marker position={marker}/>
-            }
-            )} */}
-            {/* <Marker position={marker}/>             */}
+        <GoogleMap zoom={12} center={center} mapContainerClassName='map'>
+            {games.map((game)=>(
+                <Marker
+                key={game.id}
+                position={{ lat:game.lat, lng:game.lng }}
+                />
+            ))}
         </GoogleMap>
     );
 }
