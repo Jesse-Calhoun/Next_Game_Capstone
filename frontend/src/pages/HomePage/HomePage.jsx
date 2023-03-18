@@ -87,7 +87,7 @@ const HomePage = () => {
   // useEffect(() =>{
   //   getMarkers()
   // }, [games])
-    // console.log()
+    console.log(games)
     useEffect(() =>{
     getAllGames()
   }, [])

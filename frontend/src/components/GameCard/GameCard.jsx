@@ -2,9 +2,13 @@ import axios from 'axios'
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router";
 import './GameCard.css'
+import * as moment from 'moment'
+
 const GameCard = ({ selectedGame }) => {
     const [username, setUsername] = useState('')
     const navigate = useNavigate()
+
+    let m = moment(selectedGame.date_time, 'YYYY-MM-DD hh:mm:ssA')
 
     async function getUserName(){
         let url = `http://127.0.0.1:8000/api/auth/users/${selectedGame.user_id}/`
@@ -37,7 +41,7 @@ const GameCard = ({ selectedGame }) => {
                 Address: {selectedGame.address}
                 </div>
                 <div>
-                Date/Time: {selectedGame.date_time}
+                Date/Time: {m.toString()}
                 </div>
             </div>
         );

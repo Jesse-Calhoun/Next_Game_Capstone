@@ -19,6 +19,7 @@ const GameForm = ({ }) => {
         let url = `http://127.0.0.1:8000/api/games/create_game/`
         let response = await axios.post(url, newGame, config)
         console.log(response)
+        // return(response)
     }
 
     async function getResultsFromGame(address){
@@ -33,10 +34,10 @@ const GameForm = ({ }) => {
         setGameLong(response.data.results[0].geometry.location.lng)
     }
 
-    function handlePostGame(event){
+    async function handlePostGame(event){
         if (token){
             event.preventDefault();
-            // getResultsFromGame(address)
+            getResultsFromGame(address)
             // console.log(gameLat)
             let newGame = {
                 user: user,
@@ -49,19 +50,28 @@ const GameForm = ({ }) => {
                 indoor: indoor,
                 attendees: ''
               }
-            postNewGame(newGame);
-            setAddress('')
-            setDateTime('')
-            setGameType('')
-            setIndoor(!indoor)
-            setNext(!next)
-            setGameLat(0)
-            setGameLong(0)
+            const postGameResult = await postNewGame(newGame);
+            console.log(postGameResult)
+            postGameResult.then((response)=> {
+                console.log(response, "postgame")
+                setAddress('')
+                setDateTime('')
+                setGameType('')
+                setIndoor(false)
+                setNext(false)
+                setGameLat(0)
+                setGameLong(0)
+            })
         }
           else{
             alert('Incorrect input')
         }
     }
+
+    // function upDateIndoor(event){
+    //     console.log(event)
+    //     setIndoor(!indoor)
+    // }
     return ( 
         <form onSubmit={handlePostGame}>
             <h4>Create Game</h4>
@@ -79,11 +89,11 @@ const GameForm = ({ }) => {
             </div>
             <div>
                 <label>Got Next?</label>
-                <input type='checkbox' className='check-box-input' value={next}  onChange={(event) => setNext(!next)}/>
+                <input type='checkbox' className='check-box-input' checked={next}  onChange={(event) => setNext(!next)}/>
             </div>
             <div>
                 <label>Indoor</label>
-                <input type='checkbox' className='check-box-input' value={indoor}  onChange={(event) => setIndoor(!indoor)}/>
+                <input type='checkbox' className='check-box-input' checked={indoor}  onChange={(event) => setIndoor(!indoor)}/>
             </div>
             <button type='submit'>Create Game</button>
         </form>
