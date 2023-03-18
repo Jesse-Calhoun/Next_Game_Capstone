@@ -5,7 +5,6 @@ import './GameCard.css'
 import moment from 'moment'
 
 const GameCard = ({ selectedGame }) => {
-    console.log(moment)
     const [username, setUsername] = useState('')
     const navigate = useNavigate()
 
