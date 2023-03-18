@@ -6,6 +6,7 @@ import CommentList from '../../components/CommentList/CommentList';
 import CommentForm from '../../components/CommentForm/CommentForm';
 import AttendeesList from '../../components/AttendeesList/AttendeesList';
 import JoinGameButton from '../../components/JoinGameButton/JoinGameButton';
+import moment from 'moment';
 
 
 const GameDetailPage = () => {
@@ -14,6 +15,8 @@ const GameDetailPage = () => {
     const [game, setGame] = useState(null)
     const [creator, setCreator] = useState('')
     const [comments, setComments] = useState([]);
+    // let m = moment(game.date_time, 'YYYY-MM-DD hh:mm:ssA')
+    // let m = moment(game.date_time, 'YYYY-MM-DD hh:mm:ssA')
     
     async function getGame(){
         try {
@@ -67,7 +70,7 @@ const GameDetailPage = () => {
             <div>
                     <h1>Game Creator: {creator}</h1>
                     <h2>Address: {game.address}</h2>
-                    <h2>Date/Time: {game.date_time}</h2>
+                    <h2>Date/Time: {moment(game.date_time, 'YYYY-MM-DD hh:mm:ssA').toString()}</h2>
                     <h3>Game Type: {game.game_type}</h3>
                     <h3>Indoor: {boolToWord(game.indoor)}</h3>
                     <h3>Next: {boolToWord(game.next)}</h3>
