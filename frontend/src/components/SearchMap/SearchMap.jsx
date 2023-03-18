@@ -1,24 +1,50 @@
-import { useEffect } from "react";
-import { GoogleMap, Marker, } from "@react-google-maps/api"
+import { useEffect, useMemo, useState } from "react";
+import { GoogleMap, Marker,  } from "@react-google-maps/api"
 import './SearchMap.css'
 import GameMarker from "../GameMarker/GameMarker";
 
-const SearcMap = ({ searchedLat, searchedLong, games, getResultsFromGame, gameLat, gameLong, markers }) => {
-    
+const SearcMap = ({ gameLat, gameLong, searchedLat, searchedLong, games, getResultsFromGame, markers, setMarkers, gameAddress}) => {
     const center = { lat:searchedLat, lng:searchedLong}
 
-    const marker = { lat:gameLat, lng:gameLong }
+
+    async function getMarkers(){
+        for (let i = 0; i<games.length;i++){
+            await getResultsFromGame(games[i])
+            const marker = {gameLat, gameLong}
+            setMarkers([...markers, marker])
+        }
+        // await games.map(game => {
+        //   getResultsFromGame(game.address)
+        // //   console.log(gameAddress)
+        //   const marker = {gameLat, gameLong}
+        //   setMarkers([...markers, marker])
+        // })
+    }
+    // getMarkers()
     // console.log(markers)
 
+    // const gameMarkers = games.map((game) => getResultsFromGame(game))
+    // console.log(gameMarkers)
+    // generateMarkers = (position: {LatLng}) =>
+
+    // console.log(`markers: ${markers}`)
+    // const marker = { lat:gameLat, lng:gameLong }
+    
+    // for (let i = 0; i < games.length; i++){
+    //     getResultsFromGame(games[i]);
+    //     (<Marker position={marker} />)
+    // }
     return (
         <GoogleMap zoom={10} center={center} mapContainerClassName='map'>
-            {/* {markers} */}
+            {/* {gameMarkers} */}
             {/* {markers.map((marker) =>{
-                <Marker position={{lat: marker.lat, lng:marker.lng}}/>
+                getResultsFromGame(game.address)
+                const marker = gameAddress.geometry.location
+                set
+                <Marker position={marker}/>
             }
             )} */}
-            <Marker position={marker}/>
-            
+            {/* <Marker position={marker}/>             */}
         </GoogleMap>
     );
 }
