@@ -18,9 +18,10 @@ p {
 }
 
 button {
-  background-color: transparent;
+  background-color: #F88158;
   border: 2px solid steelblue;
-  color: steelblue;
+  border-radius: 10px;
+  color: black;
   font-size: 1rem;
   font-family: inherit;
   max-width: 100px;
@@ -30,29 +31,41 @@ button {
 button:hover {
   cursor: pointer;
   color: white;
-  background-color: steelblue;
+  background-color: #F99A7B;
+  border: 2px dashed black;
 }
 
 .container {
   margin: 0 auto;
-  max-width: 600px;
+  margin-top: 10vh;
+  max-width: 80vw;
   overflow: auto;
   text-align: center;
 }
 
 .form {
-  align-items: center;
+  align-items: left;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   gap: 1rem;
+  margin: 0;
 }
 
 .form input {
+  /* align-items: l; */
   display: block;
   width: 100%;
   height: 25px;
   margin: 5px;
   padding: 3px 7px;
   font-size: 17px;
+}
+
+.form textarea{
+  width:100%
+}
+body{
+  background-color: #DEB887;
+  background-image: url('../other\ basketball.jpeg');
 }

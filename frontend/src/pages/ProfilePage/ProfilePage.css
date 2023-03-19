@@ -1,0 +1,32 @@
+.align-left{
+    align-content: left;
+    border: 3px solid black;
+    margin-right: 50px;
+    border-radius: 10px;
+    height: 91vh;
+    margin-bottom: 10vh;
+    margin-top: 20vh;
+    /* overflow: auto; */
+}
+
+.align-center{
+    align-content: center;
+    border: 3px solid black;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    margin-bottom: 10vh;
+    margin-top: 20vh;
+    /* overflow: auto; */
+}
+
+
+.friends{
+    border: 1px dashed black;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 15px;
+}

@@ -1,11 +1,19 @@
-input{
+/* input{
     width: 40%;
-}
+} */
 
-.short-input-field{
+/* .short-input-field{
     width: 15%;
-}
+} */
 
-.check-box-input{
+/* .check-box-input{
     width: 5%;
+} */
+
+/* .fixed-input{
+    height: 50px;
+  } */
+
+.checkbox{
+    align-content: left;
 }

@@ -53,11 +53,13 @@ const HomePage = () => {
     if (games){
       return (
         <div className="container">
-        <h1>Home Page for NextGame!</h1>
-        <SearchBar setLocation={setLocation} getResultsFromLocation={getResultsFromLocation} location={location} />
-        <SearcMap searchedLat={searchedLat} searchedLong={searchedLong} games={games} />
-        <GameList games={games}/>
-      </div>
+          <h1>Find a Game Near You!</h1>
+          <SearchBar setLocation={setLocation} getResultsFromLocation={getResultsFromLocation} location={location} />
+          <div className="map-margin">
+            <SearcMap searchedLat={searchedLat} searchedLong={searchedLong} games={games} />
+          </div>
+          {/* <GameList games={games}/> */}
+        </div>
     );
   }
   } return null

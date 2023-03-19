@@ -8,11 +8,13 @@ const SearcMap = ({ searchedLat, searchedLong, games}) => {
     const center = { lat:searchedLat, lng:searchedLong}
 
     return (
-        <GoogleMap zoom={12} center={center} mapContainerClassName='map'>
-            {games.map((game)=>(
-                <GameMarker game={game}/>
-            ))}
-        </GoogleMap>
+        <div className="map-margin">
+            <GoogleMap zoom={12} center={center} mapContainerClassName='map'>
+                {games.map((game)=>(
+                    <GameMarker game={game}/>
+                    ))}
+            </GoogleMap>
+        </div>
     );
 }
 

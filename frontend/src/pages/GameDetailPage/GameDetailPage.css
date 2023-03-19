@@ -1,0 +1,26 @@
+.left-side{
+    margin-top: 15vh;
+    margin-right: 25px;
+    margin-left: 25px;
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+.right-side{
+    margin-top: 15vh;
+    margin-left: 50px;
+    margin-bottom: 10vh;
+    text-align: center;
+
+}
+
+.comment-list{
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+.attendees-list{
+    margin-top: 10px;
+    border: 3px inset black;
+    border-radius: 10px;
+}

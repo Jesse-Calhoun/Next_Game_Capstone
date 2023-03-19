@@ -65,23 +65,23 @@ const GameForm = ({ }) => {
     }
 
     return ( 
-        <form onSubmit={handlePostGame}>
+        <form onSubmit={handlePostGame} className='form'>
             <h4>Create Game</h4>
-            <div>
                 <label>Address</label>
-                <input type="text" placeholder="Enter Address(location keywords(state/city))..." value={address}  onChange={(event) => setAddress(event.target.value) & getResultsFromGame(event.target.value)} />
+            <div>
+                <textarea type="text" placeholder="Enter Address(location keywords(state/city))..." value={address}  onChange={(event) => setAddress(event.target.value) & getResultsFromGame(event.target.value)} />
             </div>
             <div>
                 <label>Date/Time</label>
                 <input type='datetime-local' className='short-input-field' value={dateTime}  onChange={(event) => setDateTime(event.target.value)}/>
             </div>
-            <div>
                 <label>Game Type(description/rules)</label>
-                <input type="text" placeholder="Describe game rules/number of players per team..." value={gameType}  onChange={(event) => setGameType(event.target.value)}/>
+            <div>
+                <textarea type='text' className='fixed-input' placeholder="Describe game rules/number of players per team..." value={gameType}  onChange={(event) => setGameType(event.target.value)}/>
             </div>
             <div>
                 <label>Got Next?</label>
-                <input type='checkbox' className='check-box-input' checked={next}  onChange={(event) => setNext(!next)}/>
+                <input type='checkbox'  checked={next}  onChange={(event) => setNext(!next)}/>
             </div>
             <div>
                 <label>Indoor</label>

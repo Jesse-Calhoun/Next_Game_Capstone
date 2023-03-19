@@ -9,24 +9,37 @@ li {
 }
 
 .navBar {
-  background: steelblue;
+  background: #F88158;
   box-shadow: 4px 2px 5px gray;
-  color: white;
+  color: black;
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
+  position: relative;
+  top: 0;
+  width: 100vw;
+  z-index: 1;
 }
+
+.position-fixed{
+  position: fixed;
+}
+
+
 
 .navBar button {
   background: transparent;
-  border: 2px solid white;
-  color: white;
+  border: 2px solid black;
+  color: black;
   padding: 0.4rem 0.5rem;
+  height: 25px;
+  width: 50px;
 }
 
 .navBar button:hover {
-  background: white;
-  color: steelblue;
+  background: black;
+  color: #F88158;
   cursor: pointer;
+  border: 2px dashed dodgerblue;
 }
 
 .brand {
