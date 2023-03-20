@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './JoinGameButton.css'
 
 const JoinGameButton = ({ game, user, token, config, getGame }) => {
     const [players, setPlayers] = useState(game.attendees)
@@ -30,7 +31,7 @@ const JoinGameButton = ({ game, user, token, config, getGame }) => {
     }
 
     return ( 
-        <div>
+        <div className="margin-top">
             {user ? <button onClick={handleJoin}>Join Game</button>: <button onClick={handleCantJoin}>Join Game</button>}
         </div>
      );

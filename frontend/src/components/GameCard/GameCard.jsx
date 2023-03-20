@@ -41,7 +41,7 @@ const GameCard = ({ selectedGame }) => {
                 Game Creator: {username}
                 </div>
                 <div onClick={handleClick}>
-                Address: {selectedGame.address}
+                Location: {selectedGame.address}
                 </div>
                 <div onClick={handleClick}>
                 Date/Time: {m.toString()}

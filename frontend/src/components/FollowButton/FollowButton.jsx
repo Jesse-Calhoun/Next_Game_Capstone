@@ -1,11 +1,13 @@
 import useAuth from "../../hooks/useAuth";
 import axios from 'axios';
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const FollowButton = ({ attendee }) => {
     const [user, token, config] = useAuth();
     const [playerFriends, setPlayerFriends] = useState([{}])
     const [following, setFollowing] = useState(false)
+    const navigate = useNavigate()
 
     async function toggleFollowPlayer(){
         let url = `http://127.0.0.1:8000/api/auth/users/${attendee.id}/follow/`
@@ -29,6 +31,10 @@ const FollowButton = ({ attendee }) => {
             toggleFollowPlayer()
             setFollowing(true)
             getPlayerFriends(user)
+        }
+        else{
+            alert('Must be signed in to Follow')
+            navigate('/login')
         }
     }
 

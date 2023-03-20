@@ -69,7 +69,7 @@ const GameDetailPage = () => {
             <div>
                 <div className="col-sm-6 left-side">
                     <h1>Game Creator: {creator}</h1>
-                    <h2>Address: {game.address}</h2>
+                    <h2>Location: {game.address}</h2>
                     <h2>Date/Time: {m.toString()}</h2>
                     <h3>Game Type: {game.game_type}</h3>
                     <h3>Indoor: {boolToWord(game.indoor)}</h3>
