@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const CommentForm = ({ game, user, token, config, getAllComments }) => {
     const [comment, setComment] = useState('')
+    const navigate = useNavigate()
 
     async function postNewComment(newComment){
         let url = `http://127.0.0.1:8000/api/games/${game.id}/comments/create/`
@@ -24,6 +26,7 @@ const CommentForm = ({ game, user, token, config, getAllComments }) => {
         }
         else{
           alert('Must be signed in to comment.')
+          navigate('/login')
         }
       }
 

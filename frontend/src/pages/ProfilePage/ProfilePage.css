@@ -3,19 +3,21 @@
     border: 3px solid black;
     margin-right: 50px;
     border-radius: 10px;
-    height: 91vh;
+    height: 100%;
     margin-bottom: 10vh;
-    margin-top: 20vh;
+    margin-top: 10vh;
     /* overflow: auto; */
 }
 
 .align-center{
     align-content: center;
     border: 3px solid black;
+    height: 100%;
     padding-bottom: 5px;
     border-radius: 10px;
     margin-bottom: 10vh;
-    margin-top: 20vh;
+    margin-top: 10vh;
+    margin-right: 70px;
     /* overflow: auto; */
 }
 
@@ -29,4 +31,12 @@
     margin-left: 100px;
     margin-right: 100px;
     border-radius: 15px;
+}
+
+.player-info{
+    padding-left: 50px;
+}
+
+.underline{
+    text-decoration: underline;
 }

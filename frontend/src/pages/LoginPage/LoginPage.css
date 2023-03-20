@@ -1,3 +1,16 @@
 .error {
   color: red;
 }
+
+.login{
+  margin-top: 100px;
+}
+
+.button{
+  align-self: center;
+}
+
+.link{
+  color: white;
+  background-color: #F88158;
+}

@@ -3,13 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import FriendsList from '../../components/FriendsList/FriendsList';
 import GameForm from '../../components/GameForm/GameForm';
-import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
+import GameList from '../../components/GameList/GameList';
 import "./ProfilePage.css"
 
 const ProfilePage = () => {
     const { userId } = useParams()
     const [registeredPlayer, setRegisteredPlayer] = useState(null)
+    const [games, setGames] = useState([])
 
     async function getPlayerById(userId){
         try{
@@ -21,6 +21,16 @@ const ProfilePage = () => {
         }
     }
 
+    async function getAllGames(){
+        let url = 'http://127.0.0.1:8000/api/games/'
+        let response = await axios.get(url)
+        setGames(response.data)
+    }
+
+    useEffect(() =>{
+        getAllGames()
+    }, [games])
+
     useEffect(() =>{
         getPlayerById(userId);
     }, [registeredPlayer])
@@ -29,15 +39,20 @@ const ProfilePage = () => {
         return ( 
             <div className='profile-body'>
                 <div className='col-sm-5 align-left'>
-                    <h1>{registeredPlayer.username}'s Profile</h1>
-                    <h2>Player's Full Name{registeredPlayer.first_name} {registeredPlayer.last_name}</h2>
-                    <h2>{registeredPlayer.email}</h2>
+                    <div className='player-info'>
+                        <div className='underline'>
+                            <h1>{registeredPlayer.username}'s Profile</h1>
+                        </div>
+                        <h2>Player's Full Name: {registeredPlayer.first_name} {registeredPlayer.last_name}</h2>
+                        <h2>Email: {registeredPlayer.email}</h2>
+                    </div>
                     <div className='friends'>
                         <FriendsList registeredPlayer={registeredPlayer}/>
                     </div>
+                    <GameList games={games} getAllGames={getAllGames}/>
                 </div>
                 <div className='col-sm-6 align-center'>
-                    <GameForm/>
+                    <GameForm getAllGames={getAllGames}/>
                 </div>
             </div>
          );

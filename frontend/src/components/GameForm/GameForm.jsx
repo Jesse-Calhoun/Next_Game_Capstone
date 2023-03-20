@@ -3,7 +3,7 @@ import { useState } from 'react'
 import useAuth from '../../hooks/useAuth'
 import './GameForm.css'
 
-const GameForm = ({ }) => {
+const GameForm = ({ getAllGames }) => {
     const [user, token, config] = useAuth();
     const [address, setAddress] = useState('')
     const [dateTime, setDateTime] = useState('')
@@ -46,20 +46,17 @@ const GameForm = ({ }) => {
                 indoor: indoor,
                 attendees: ''
               }
-            const postGameResult = await postNewGame(newGame);
-            console.log(postGameResult)
-            postGameResult.then((response)=> {
-                console.log(response, "postgame")
-                setAddress('')
-                setDateTime('')
-                setGameType('')
-                setIndoor(false)
-                setNext(false)
-                setGameLat(0)
-                setGameLong(0)
-            })
-        }
-          else{
+            postNewGame(newGame);
+            setAddress('')
+            setDateTime('')
+            setGameType('')
+            setIndoor(false)
+            setNext(false)
+            setGameLat(0)
+            setGameLong(0)
+            getAllGames()
+            }
+        else{
             alert('Incorrect input')
         }
     }

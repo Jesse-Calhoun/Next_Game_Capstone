@@ -1,10 +1,20 @@
 import { useEffect } from "react";
+import useAuth from "../../hooks/useAuth";
 import GameCard from "../GameCard/GameCard";
+import './GameList.css'
 
-const GameList = ({ games }) => {
-    let gameCards = games.map((game) => <GameCard selectedGame={game}/>)
+const GameList = ({ games, getAllGames }) => {
+    const [user] = useAuth();
+    let gameCards = games.map((game) =>  {
+        if (game.user_id == user.id){
+            return <GameCard selectedGame={game} getAllGames={getAllGames}/>
+        }
+    })
     return ( 
         <div>
+            <div className="line-up">
+                <h3 >{user.username}'s Games:</h3>
+            </div>
             {gameCards}
         </div>
      );

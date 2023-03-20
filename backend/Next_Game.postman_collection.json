@@ -158,7 +158,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/auth/users/2/follow/",
+							"raw": "http://127.0.0.1:8000/api/auth/users/4/follow/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -171,7 +171,7 @@
 								"api",
 								"auth",
 								"users",
-								"2",
+								"4",
 								"follow",
 								""
 							]
@@ -203,7 +203,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/auth/users/2/",
+							"raw": "http://127.0.0.1:8000/api/auth/users/1/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -216,7 +216,7 @@
 								"api",
 								"auth",
 								"users",
-								"2",
+								"1",
 								""
 							]
 						}
@@ -418,7 +418,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"address\": \"Connecticut Sports Arena New Milford, Ct\",\n    \"date_time\": \"2023-03-14T08:30:00Z\",\n    \"game_type\": \"Looking for 2 on 2, half court, game to 11, 2 pointers equal 1 point and 3 pointers equal 2. Make it take it.\",\n    \"players_at_game\": \"3\",\n    \"next\": \"False\",\n    \"indoor\": \"False\",\n    \"attendees\": [\n        {\n            \"id\": 4,\n            \"password\": \"pbkdf2_sha256$390000$qHjd4bcAj7apjgL6r51DT8$3i69CXzVhzTvxZx7evDOz3J8xKkghEZl4is63630soc=\",\n            \"last_login\": null,\n            \"is_superuser\": false,\n            \"username\": \"YoureNotThatGuy\",\n            \"first_name\": \"George\",\n            \"last_name\": \"Johnson\",\n            \"email\": \"johnsonandjohnson@mail.com\",\n            \"is_staff\": false,\n            \"is_active\": true,\n            \"date_joined\": \"2023-03-07T17:09:52.067544Z\",\n            \"groups\": [],\n            \"user_permissions\": [],\n            \"friends\": []\n        }\n    ]\n}",
+							"raw": "{\n    \"address\": \"Connecticut Sports Arena New Milford, Ct\",\n    \"date_time\": \"2023-03-14T08:30:00Z\",\n    \"game_type\": \"Looking for 2 on 2, half court, game to 11, 2 pointers equal 1 point and 3 pointers equal 2. Make it take it.\",\n    \"next\": \"False\",\n    \"indoor\": \"False\",\n    \"attendees\": [\n        {\n            \"id\": 4,\n            \"password\": \"pbkdf2_sha256$390000$qHjd4bcAj7apjgL6r51DT8$3i69CXzVhzTvxZx7evDOz3J8xKkghEZl4is63630soc=\",\n            \"last_login\": null,\n            \"is_superuser\": false,\n            \"username\": \"YoureNotThatGuy\",\n            \"first_name\": \"George\",\n            \"last_name\": \"Johnson\",\n            \"email\": \"johnsonandjohnson@mail.com\",\n            \"is_staff\": false,\n            \"is_active\": true,\n            \"date_joined\": \"2023-03-07T17:09:52.067544Z\",\n            \"groups\": [],\n            \"user_permissions\": [],\n            \"friends\": []\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -458,7 +458,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/games/11/",
+							"raw": "http://127.0.0.1:8000/api/games/12/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -470,7 +470,7 @@
 							"path": [
 								"api",
 								"games",
-								"11",
+								"12",
 								""
 							]
 						}
@@ -566,12 +566,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5NjAwNTkxLCJpYXQiOjE2Nzg3MzY1OTEsImp0aSI6ImJiZmJlNDMyNDk3MjRjZGU4NTQ4MTNlYjg5NjlmMmM2IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.pRX5xS7SV1LOS0AzVKlOjyMyZ4YDZw8YsLDqRu_s52o",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwMDIwMjU2LCJpYXQiOjE2NzkxNTYyNTYsImp0aSI6ImE5MjVlZTI5MmI5NTRkOGViODI2N2Y5Njc5N2I3ODhhIiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJKZXNzZUNhbGhvdW4iLCJmaXJzdF9uYW1lIjoiSmVzc2UifQ.5C4drwVGdgk5q2jQSs6Rx6RuHQb22DV3tqmwErJSI9k",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/games/4/edit/",
+							"raw": "http://127.0.0.1:8000/api/games/34/edit/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -583,7 +583,7 @@
 							"path": [
 								"api",
 								"games",
-								"4",
+								"34",
 								"edit",
 								""
 							]

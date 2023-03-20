@@ -1,11 +1,14 @@
 import React from 'react';
+import useAuth from '../../hooks/useAuth';
 import FollowButton from '../FollowButton/FollowButton';
 
 const Attendee = ({ attendee }) => {
+    const [user] = useAuth();
     return ( 
         <div>
             {attendee.username}
-            <FollowButton attendee={attendee}/>
+            {attendee === user ? '' :<FollowButton attendee={attendee}/>}
+            {/* <FollowButton attendee={attendee}/> */}
         </div>
      );
 }

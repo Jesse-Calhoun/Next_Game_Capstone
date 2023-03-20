@@ -5,9 +5,11 @@ import SearcMap from "../../components/SearchMap/SearchMap";
 import { useEffect, useState } from "react";
 import { useLoadScript } from '@react-google-maps/api'
 import axios from "axios";
+import useAuth from "../../hooks/useAuth";
 // import './HomePage.css'
 
 const HomePage = () => {
+  const [user, token] = useAuth();
   const [location, setLocation] = useState('')
   const [games, setGames] = useState([])
   const [searchedLat, setSearchedLat] = useState(42.1034769)
@@ -36,20 +38,20 @@ const HomePage = () => {
 
   useEffect(() =>{
     getAllGames()
-  }, [])
+  }, [games])
 
   
   if (!isLoaded){
     return (
       <div className="container">
-        <h1>Home Page for NextGame!</h1>
+        <h1>Find a Game Near You!</h1>
         <SearchBar setLocation={setLocation} getResultsFromLocation={getResultsFromLocation} location={location} />
         <div>Loading...</div>
-        <GameList games={games}/>
+        {token ?<GameList games={games} getAllGames={getAllGames}/>: ''}
       </div>
     );
   }
-  else{
+  else {
     if (games){
       return (
         <div className="container">
@@ -58,9 +60,22 @@ const HomePage = () => {
           <div className="map-margin">
             <SearcMap searchedLat={searchedLat} searchedLong={searchedLong} games={games} />
           </div>
-          {/* <GameList games={games}/> */}
+          {/* {token ?<GameList games={games} getAllGames={getAllGames}/>: ''} */}
         </div>
     );
+  } else {
+    // if (user){
+    //   return(
+    //     <div className="container">
+    //       <h1>Find a Game Near You!</h1>
+    //       <SearchBar setLocation={setLocation} getResultsFromLocation={getResultsFromLocation} location={location} />
+    //       <div className="map-margin">
+    //         <SearcMap searchedLat={searchedLat} searchedLong={searchedLong} games={games} />
+    //       </div>
+    //       <GameList games={games} getAllGames={getAllGames}/>
+    //     </div>
+    //   )
+    // }
   }
   } return null
 };

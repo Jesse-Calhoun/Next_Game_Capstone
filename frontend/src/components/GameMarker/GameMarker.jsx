@@ -34,7 +34,7 @@ const GameMarker = ({ game }) => {
         <Marker key={game.id} position={{ lat:game.lat, lng:game.lng }} onClick={handleClick} onDblClick={handleDblClick}>
             { selectedGame === game && (
               <InfoWindow >
-                <div>Game Creator:{gameCreator} Address: {game.address} Lat:{game.lat} Long:{game.lng}</div>
+                <div>Game Creator:{gameCreator} Address: {selectedGame.address} Lat:{selectedGame.lat} Long:{selectedGame.lng}</div>
               </InfoWindow>)}
         </Marker>
      );

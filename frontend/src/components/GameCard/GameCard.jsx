@@ -3,8 +3,10 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router";
 import './GameCard.css'
 import moment from 'moment'
+import useAuth from '../../hooks/useAuth';
 
-const GameCard = ({ selectedGame }) => {
+const GameCard = ({ selectedGame, getAllGames }) => {
+    const [user, token, config] = useAuth();
     const [username, setUsername] = useState('')
     const navigate = useNavigate()
 
@@ -16,6 +18,11 @@ const GameCard = ({ selectedGame }) => {
         setUsername(response.data.username)        
     }
 
+    async function deleteGame(){
+        let url = `http://127.0.0.1:8000/api/games/${selectedGame.id}/edit/`
+        let response = await axios.delete(url, config)
+    }
+
     useEffect(() =>{
         getUserName()
     }, [selectedGame])
@@ -25,17 +32,22 @@ const GameCard = ({ selectedGame }) => {
         setUsername('')
     }
 
+    function handleDelete(){
+        deleteGame();
+        // getAllGames();
+    }
         return ( 
-            <div key={selectedGame.id} onClick={handleClick} className='gamecards'>
-                <div>
+            <div key={selectedGame.id}  className='gamecards'>
+                <div onClick={handleClick}>
                 Game Creator: {username}
                 </div>
-                <div>
+                <div onClick={handleClick}>
                 Address: {selectedGame.address}
                 </div>
-                <div>
+                <div onClick={handleClick}>
                 Date/Time: {m.toString()}
                 </div>
+                <button onClick={handleDelete}>Delete</button>
             </div>
         );
 }

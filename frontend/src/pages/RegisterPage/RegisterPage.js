@@ -17,7 +17,7 @@ const RegisterPage = () => {
   );
 
   return (
-    <div className="container">
+    <div className="container register">
       <form className="form" onSubmit={handleSubmit}>
         <label>
           Username:{" "}
@@ -68,7 +68,7 @@ const RegisterPage = () => {
           NOTE: Make this an uncommon password with characters, numbers, and
           special characters!
         </p>
-        <button>Register!</button>
+        <button className="button">Register!</button>
       </form>
     </div>
   );
