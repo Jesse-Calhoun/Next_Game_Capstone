@@ -6,10 +6,9 @@ import { useEffect, useState } from "react";
 import { useLoadScript } from '@react-google-maps/api'
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
-// import './HomePage.css'
 
 const HomePage = () => {
-  const [user, token] = useAuth();
+  const [user, token, config] = useAuth();
   const [location, setLocation] = useState('')
   const [games, setGames] = useState([])
   const [searchedLat, setSearchedLat] = useState(42.1034769)

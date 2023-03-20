@@ -16,7 +16,6 @@ const GameDetailPage = () => {
     const [game, setGame] = useState(null)
     const [creator, setCreator] = useState('')
     const [comments, setComments] = useState([]);
-    // let m = moment(selectedGame.date_time, 'YYYY-MM-DD hh:mm:ssA')
     
     async function getGame(){
         try {

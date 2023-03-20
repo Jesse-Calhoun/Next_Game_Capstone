@@ -9,7 +9,7 @@ const SearcMap = ({ searchedLat, searchedLong, games}) => {
 
     return (
         <div className="map-margin">
-            <GoogleMap zoom={12} center={center} mapContainerClassName='map'>
+            <GoogleMap zoom={13} center={center} mapContainerClassName='map'>
                 {games.map((game)=>(
                     <GameMarker game={game}/>
                     ))}

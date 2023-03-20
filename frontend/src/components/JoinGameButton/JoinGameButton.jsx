@@ -1,8 +1,10 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const JoinGameButton = ({ game, user, token, config, getGame }) => {
     const [players, setPlayers] = useState(game.attendees)
+    const navigate = useNavigate();
 
     async function joinGame(user){
         let url = `http://127.0.0.1:8000/api/games/${game.id}/join/`
@@ -21,9 +23,15 @@ const JoinGameButton = ({ game, user, token, config, getGame }) => {
         }
     }
 
+    function handleCantJoin(event){
+            event.preventDefault();
+            alert('Must be signed in to join.')
+            navigate('/login')
+    }
+
     return ( 
         <div>
-            <button onClick={handleJoin}>Join Game</button>
+            {user ? <button onClick={handleJoin}>Join Game</button>: <button onClick={handleCantJoin}>Join Game</button>}
         </div>
      );
 }

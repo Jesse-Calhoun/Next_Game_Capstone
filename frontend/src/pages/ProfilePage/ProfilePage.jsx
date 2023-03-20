@@ -49,7 +49,7 @@ const ProfilePage = () => {
                     <div className='friends'>
                         <FriendsList registeredPlayer={registeredPlayer}/>
                     </div>
-                    <GameList games={games} getAllGames={getAllGames}/>
+                    <GameList games={games}/>
                 </div>
                 <div className='col-sm-6 align-center'>
                     <GameForm getAllGames={getAllGames}/>

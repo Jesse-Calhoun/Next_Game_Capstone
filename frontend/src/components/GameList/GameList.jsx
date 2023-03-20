@@ -3,11 +3,11 @@ import useAuth from "../../hooks/useAuth";
 import GameCard from "../GameCard/GameCard";
 import './GameList.css'
 
-const GameList = ({ games, getAllGames }) => {
+const GameList = ({ games }) => {
     const [user] = useAuth();
     let gameCards = games.map((game) =>  {
         if (game.user_id == user.id){
-            return <GameCard selectedGame={game} getAllGames={getAllGames}/>
+            return <GameCard selectedGame={game} />
         }
     })
     return ( 

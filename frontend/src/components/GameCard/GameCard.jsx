@@ -5,7 +5,7 @@ import './GameCard.css'
 import moment from 'moment'
 import useAuth from '../../hooks/useAuth';
 
-const GameCard = ({ selectedGame, getAllGames }) => {
+const GameCard = ({ selectedGame }) => {
     const [user, token, config] = useAuth();
     const [username, setUsername] = useState('')
     const navigate = useNavigate()
@@ -34,7 +34,6 @@ const GameCard = ({ selectedGame, getAllGames }) => {
 
     function handleDelete(){
         deleteGame();
-        // getAllGames();
     }
         return ( 
             <div key={selectedGame.id}  className='gamecards'>
