@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './CommentForm.css'
 
 
 const CommentForm = ({ game, user, token, config, getAllComments }) => {
@@ -34,7 +35,7 @@ const CommentForm = ({ game, user, token, config, getAllComments }) => {
         <form onSubmit={handleNewComment}>
             <label>Comment</label>
             <div>
-                <input type="text" placeholder="Must be signed in to comment!" value={comment}  onChange={(event) => setComment(event.target.value)}/>
+                <input type="text" className="input-width" placeholder="Must be signed in to comment!" value={comment}  onChange={(event) => setComment(event.target.value)}/>
                 <button type="submit">Post</button>
             </div>
         </form>
