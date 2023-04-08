@@ -30,8 +30,8 @@ button {
 
 button:hover {
   cursor: pointer;
-  color: white;
-  background-color: #F99A7B;
+  color: #F99A7B;
+  background-color: whitesmoke;
   border: 2px dashed black;
 }
 

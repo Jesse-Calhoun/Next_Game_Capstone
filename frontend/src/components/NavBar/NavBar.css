@@ -36,7 +36,7 @@ li {
 }
 
 .navBar button:hover {
-  background: black;
+  background: white;
   color: #F88158;
   cursor: pointer;
   border: 2px dashed dodgerblue;

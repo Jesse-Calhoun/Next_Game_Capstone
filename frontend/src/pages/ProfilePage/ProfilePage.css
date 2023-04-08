@@ -1,11 +1,14 @@
 .align-left{
     align-content: left;
     border: 3px solid black;
-    margin-right: 50px;
+    margin-right: 60px;
+    margin-left: 25px;
     border-radius: 10px;
     height: 100%;
     margin-bottom: 10vh;
     margin-top: 10vh;
+    background: rgba(245,245,245,0.6);
+    /* opacity: 85%; */
     /* overflow: auto; */
 }
 
@@ -17,7 +20,8 @@
     border-radius: 10px;
     margin-bottom: 10vh;
     margin-top: 10vh;
-    margin-right: 70px;
+    margin-right: 25px;
+    background: rgba(245,245,245,0.6);
     /* overflow: auto; */
 }
 
@@ -31,10 +35,13 @@
     margin-left: 100px;
     margin-right: 100px;
     border-radius: 15px;
+    background-color: whitesmoke;
+    /* opacity: 85%; */
 }
 
 .player-info{
     padding-left: 50px;
+    /* color: royalblue; */
 }
 
 .underline{
