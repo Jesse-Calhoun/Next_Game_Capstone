@@ -61,4 +61,3 @@ const FollowButton = ({ attendee }) => {
 }
  
 export default FollowButton;
-heheheh
