@@ -75,12 +75,12 @@ const GameDetailPage = () => {
                     <h3>Indoor: {boolToWord(game.indoor)}</h3>
                     <h3>Next: {boolToWord(game.next)}</h3>
                 </div>
-                <div className="col-sm-5 right-side">
-                    <div className="comment-list">
+                <div className="col-sm-5">
+                    <div className="comment-list right-side">
                         <CommentList comments={comments}/>
                         <CommentForm game={game} user={user} token={token} config={config} getAllComments={getAllComments}/>
                     </div>
-                    <div className="attendees-list">
+                    <div className="attendees-list right-side">
                         <AttendeesList game={game} getGame={getGame}/>
                         <JoinGameButton game={game} user={user} token={token} config={config} getGame={getGame}/>
                     </div>
