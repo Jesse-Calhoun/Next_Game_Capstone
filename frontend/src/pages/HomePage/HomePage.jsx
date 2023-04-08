@@ -37,7 +37,7 @@ const HomePage = () => {
 
   useEffect(() =>{
     getAllGames()
-  }, [games])
+  }, [])
 
   
   if (!isLoaded){

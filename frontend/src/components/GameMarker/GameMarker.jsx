@@ -25,15 +25,20 @@ const GameMarker = ({ game }) => {
 
     function handleClick(){
         setSelectedGame(game)
+        getGameCreatorUsername(selectedGame)
     }
-    useEffect(()=>{
-        getGameCreatorUsername();
-    }, [])
+    function handleCloseClick(){
+        setSelectedGame(null)
+        setGameCreator('')
+    }
+    // useEffect(()=>{
+    //     getGameCreatorUsername();
+    // }, [])
     
     return ( 
-        <Marker key={game.id} position={{ lat:game.lat, lng:game.lng }} onClick={handleClick} onDblClick={handleDblClick}>
+        <Marker key={game.id} position={{ lat:game.lat, lng:game.lng }} onClick={handleClick} onDblClick={handleDblClick} >
             { selectedGame === game && (
-              <InfoWindow >
+              <InfoWindow onCloseClick={handleCloseClick}>
                 <div>Game Creator:{gameCreator} Address: {selectedGame.address} Lat:{selectedGame.lat} Long:{selectedGame.lng}</div>
               </InfoWindow>)}
         </Marker>
