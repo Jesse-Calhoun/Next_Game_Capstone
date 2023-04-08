@@ -20,7 +20,7 @@ const JoinGameButton = ({ game, user, token, config, getGame }) => {
             setPlayers(game.attendees)
         }
         else{
-            alert('Must be signed in to comment.')
+            alert('Must be signed in to join.')
         }
     }
 

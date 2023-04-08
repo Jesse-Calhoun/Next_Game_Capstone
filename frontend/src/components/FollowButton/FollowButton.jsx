@@ -20,7 +20,7 @@ const FollowButton = ({ attendee }) => {
         let response = await axios.get(url)
         setPlayerFriends(response.data.friends)
         console.log(response.data)
-        let result = response.data.friends.filter(el => el.id == attendee.id)
+        let result = response.data.friends.filter(friend => friend.id == attendee.id)
         if(result.length>0){
             setFollowing(true)
         }
@@ -30,7 +30,7 @@ const FollowButton = ({ attendee }) => {
         if (token){
             toggleFollowPlayer()
             setFollowing(true)
-            getPlayerFriends(user)
+            // getPlayerFriends(user)
         }
         else{
             alert('Must be signed in to Follow')
@@ -42,15 +42,19 @@ const FollowButton = ({ attendee }) => {
         if (token){
             toggleFollowPlayer()
             setFollowing(false)
-            getPlayerFriends(user)
+            // getPlayerFriends(user)
          
+        }
+        else{
+            alert('Must be signed in to Follow')
+            navigate('/login')
         }
     }
 
     useEffect(() =>{
         getPlayerFriends(user)
         console.log('friends' +playerFriends)
-    }, [])
+    }, [user.friends])
 
     return ( 
         <div>
